@@ -19,3 +19,12 @@ CREATE TABLE `canale` (
     `numero` INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(`id`,`nome`)
 );
+
+DROP TABLE IF EXISTS  `palinsesto`;
+CREATE TABLE `palinsesto` (
+`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+`giorno` DATE,
+ora_inizio TIME,
+ora_fine TIME,
+PRIMARY KEY(id,giorno)
+);
