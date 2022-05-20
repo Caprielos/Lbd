@@ -22,31 +22,31 @@ CREATE TABLE `canale` (
 
 DROP TABLE IF EXISTS  `palinsesto`;
 CREATE TABLE `palinsesto` (
-`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-`giorno` DATE,
-ora_inizio TIME,
-ora_fine TIME,
-PRIMARY KEY(id,giorno)
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`giorno` DATE,
+	`ora_inizio` TIME,
+	`ora_fine` TIME,
+	PRIMARY KEY(id,giorno)
 );
 
 DROP TABLE IF EXISTS  `programma`;
 CREATE TABLE `programma` (
-`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-titolo VARCHAR(64),
-durata TIME,
-descizione VARCHAR(128),
-anno_uscita DATE,
-stagione TINYINT,
-episodio TINYINT,
-`path` VARCHAR(255),
-imagine LONGBLOB,
-PRIMARY KEY(id,titolo,anno_uscita,stagione,episodi)
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`titolo` VARCHAR(64),
+	`durata` TIME,
+	`descizione` VARCHAR(128),
+	`anno_uscita` DATE,
+	`stagione` TINYINT,
+	`episodio` TINYINT,
+	`path` VARCHAR(255),
+	`imagine` LONGBLOB,
+	PRIMARY KEY(`id`, `titolo`, `anno_uscita`, `stagione`, `episodio`)
 );
 
-DROP TABLE IF EXISTS  `programma`;
-CREATE TABLE `programma` (
-`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-nome ENUM("animazione","avventura","azione"),
-PRIMARY KEY(id,nome)
+DROP TABLE IF EXISTS  `genere`;
+CREATE TABLE `genere` (
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`nome` ENUM("animazione","avventura","azione"),
+	PRIMARY KEY(`id`, `nome`)
 );
 
