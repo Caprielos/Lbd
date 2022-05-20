@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS guida_tv;
+USE guida_tv;
