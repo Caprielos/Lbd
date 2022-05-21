@@ -4,10 +4,13 @@ USE `guida_tv`;
 
 DROP TABLE IF EXISTS `utente`;
 DROP TABLE IF EXISTS `canale`;
-DROP TABLE IF EXISTS  `palinsesto`;
-DROP TABLE IF EXISTS  `programma`;
-DROP TABLE IF EXISTS  `genere`;
+DROP TABLE IF EXISTS `palinsesto`;
+DROP TABLE IF EXISTS `programma`;
+DROP TABLE IF EXISTS `genere`;
 DROP TABLE IF EXISTS `persone`;
+DROP TABLE IF EXISTS `composto`;
+DROP TABLE IF EXISTS `comprende`;
+DROP TABLE IF EXISTS `ha`;
 
 -- INIZIO CREAZIONE TABELLE
 
@@ -42,7 +45,7 @@ CREATE TABLE `programma` (
 	`stagione` TINYINT NOT NULL,
 	`episodio` TINYINT NOT NULL,
 	`path` VARCHAR(255),
-	`imagine` LONGBLOB,
+	`immagine` LONGBLOB,
 	PRIMARY KEY(`id`, `titolo`, `anno_uscita`, `stagione`, `episodio`)
 );
 
@@ -60,5 +63,28 @@ CREATE TABLE `persone` (
     PRIMARY KEY(`id`)
 );
 
+CREATE TABLE `composto` (
+	`id_canale` INTEGER UNSIGNED,
+    `id_palinsesto` INTEGER UNSIGNED,
+    PRIMARY KEY(`id_canale`, `id_palinsesto`)
+    -- FOREIGN KEY
+);
+
+CREATE TABLE `comprende` (
+	`id_palinsesto` INTEGER UNSIGNED,
+	`id_programma` INTEGER UNSIGNED,
+      -- FOREIGN KEY
+    PRIMARY KEY( `id_palinsesto`, `id_programma`)
+);
+
+CREATE TABLE `ha` (
+	`id_programma` INTEGER UNSIGNED,
+	`id_genere` INTEGER UNSIGNED,
+    PRIMARY KEY(`id_programma`, `id_genere`)
+);
+
+-- scrivo i generi
 INSERT INTO `genere` (`nome`) VALUES ("Azione"),("Avventura"),("Fantascienza"),("Romantico"),("Sangue");
+
+INSERT INTO `canale` (`nome`, `numero`) VALUES ("Rai 1", 1), ("Rai 2", 2), ("Rai 3", 3);
 
