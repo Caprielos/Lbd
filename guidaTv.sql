@@ -88,3 +88,6 @@ INSERT INTO `genere` (`nome`) VALUES ("Azione"),("Avventura"),("Fantascienza"),(
 
 INSERT INTO `canale` (`nome`, `numero`) VALUES ("Rai 1", 1), ("Rai 2", 2), ("Rai 3", 3);
 
+INSERT INTO `palinsesto` (`giorno`, `ora_inizio`, `ora_fine`) 
+VALUES ('2022-05-22', '01:00:00', '23:00:00'), ('2022-05-22', '01:00:00', '23:00:00'), ('2022-05-22', '01:00:00', '23:00:00');
+

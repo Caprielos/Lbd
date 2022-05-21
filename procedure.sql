@@ -18,12 +18,12 @@ END $
 
 -- 2A > [Inserimento di un film.] < --
 CREATE PROCEDURE `inserisci_film` (IN titolo_param VARCHAR(64),
-								  IN durata_param TIME,
-                                  IN descrizione_param VARCHAR(128),
-								  IN anno_uscita_param DATE,
-								  IN path_param VARCHAR(255),
-								  IN immagine_param LONGBLOB,
-								  OUT result BOOLEAN)
+								   IN durata_param TIME,
+                                   IN descrizione_param VARCHAR(128),
+								   IN anno_uscita_param DATE,
+								   IN path_param VARCHAR(255),
+								   IN immagine_param LONGBLOB,
+								   OUT result BOOLEAN)
 
 BEGIN
 
@@ -32,7 +32,7 @@ BEGIN
 			SET result = false;
 		ELSE
 			INSERT INTO `programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `path`, `immagine`) 
-			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, 1, 1, path_param, immagine_param);
+			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, 0, 0, path_param, immagine_param);
             SET result = true;
 		END IF;
         
