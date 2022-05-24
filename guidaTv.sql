@@ -7,10 +7,10 @@ DROP TABLE IF EXISTS `canale`;
 DROP TABLE IF EXISTS `palinsesto`;
 DROP TABLE IF EXISTS `programma`;
 DROP TABLE IF EXISTS `genere`;
-DROP TABLE IF EXISTS `persone`;
-DROP TABLE IF EXISTS `composto`;
+DROP TABLE IF EXISTS `persona`;
 DROP TABLE IF EXISTS `comprende`;
-DROP TABLE IF EXISTS `ha`;
+DROP TABLE IF EXISTS `possiede`;
+DROP TABLE IF EXISTS `partecipa`;
 
 -- INIZIO CREAZIONE TABELLE
 
@@ -18,14 +18,14 @@ CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(64) NOT NULL UNIQUE,
     `pwd` VARCHAR(32) NOT NULL,
-    PRIMARY KEY(`id`,`email`)
+    PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `canale` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(64) NOT NULL UNIQUE,
     `numero` INTEGER UNSIGNED NOT NULL,
-    PRIMARY KEY(`id`,`nome`)
+    PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `palinsesto` (
@@ -33,7 +33,8 @@ CREATE TABLE `palinsesto` (
 	`giorno` DATE NOT NULL,
 	`ora_inizio` TIME NOT NULL,
 	`ora_fine` TIME NOT NULL,
-	PRIMARY KEY(`id`, `giorno`)
+    `id_canale` INTEGER UNSIGNED NOT NULL,
+	PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `programma` (
@@ -42,20 +43,21 @@ CREATE TABLE `programma` (
 	`durata` TIME NOT NULL,
 	`descizione` VARCHAR(128) NOT NULL,
 	`anno_uscita` DATE NOT NULL,
-	`stagione` TINYINT NOT NULL,
-	`episodio` TINYINT NOT NULL,
+	`stagione` TINYINT,
+	`episodio` MEDIUMINT,
+    `produttore` VARCHAR(50) NOT NULL,
 	`path` VARCHAR(255),
 	`immagine` LONGBLOB,
-	PRIMARY KEY(`id`, `titolo`, `anno_uscita`, `stagione`, `episodio`)
+	PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `genere` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`nome` VARCHAR(64) NOT NULL,
-	PRIMARY KEY(`id`, `nome`)
+	`nome` VARCHAR(64) NOT NULL UNIQUE,
+	PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `persone` (
+CREATE TABLE `persona` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(64) NOT NULL,
     `cognome` VARCHAR(64) NOT NULL,
@@ -63,25 +65,66 @@ CREATE TABLE `persone` (
     PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `composto` (
-	`id_canale` INTEGER UNSIGNED,
-    `id_palinsesto` INTEGER UNSIGNED,
-    PRIMARY KEY(`id_canale`, `id_palinsesto`)
-    -- FOREIGN KEY
-);
-
 CREATE TABLE `comprende` (
-	`id_palinsesto` INTEGER UNSIGNED,
-	`id_programma` INTEGER UNSIGNED,
-    
-      -- FOREIGN KEY
+	`id_palinsesto` INTEGER UNSIGNED NOT NULL,
+	`id_programma` INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY( `id_palinsesto`, `id_programma`)
 );
 
-CREATE TABLE `ha` (
-	`id_programma` INTEGER UNSIGNED,
-	`id_genere` INTEGER UNSIGNED,
+CREATE TABLE `possiede` (
+	`id_programma` INTEGER UNSIGNED NOT NULL,
+	`id_genere` INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(`id_programma`, `id_genere`)
 );
+
+CREATE TABLE `partecipa` (
+	`id_programma` INTEGER UNSIGNED NOT NULL,
+	`id_persona` INTEGER UNSIGNED NOT NULL,
+    PRIMARY KEY(`id_programma`, `id_persona`)
+);
+
+ALTER TABLE `guida_tv`.`comprende` 
+ADD CONSTRAINT `id_palinsesto_programma`
+FOREIGN KEY (`id_palinsesto`)
+REFERENCES `guida_tv`.`palinsesto` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`comprende` 
+ADD CONSTRAINT `id_programma_palinsesto`
+FOREIGN KEY (`id_programma`)
+REFERENCES `guida_tv`.`programma` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`partecipa` 
+ADD CONSTRAINT `id_programma_persona`
+FOREIGN KEY (`id_programma`)
+REFERENCES `guida_tv`.`programma` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`partecipa` 
+ADD CONSTRAINT `id_persona_programma`
+FOREIGN KEY (`id_persona`)
+REFERENCES `guida_tv`.`persona` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`possiede` 
+ADD CONSTRAINT `id_programma_genere`
+FOREIGN KEY (`id_programma`)
+REFERENCES `guida_tv`.`programma` (`id`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`possiede` 
+ADD CONSTRAINT `id_genere_programma`
+FOREIGN KEY (`id_genere`)
+REFERENCES `guida_tv`.`genere` (`id`)
+ON DELETE NO ACTION
+ON UPDATE CASCADE;
+
+
 
 INSERT INTO `genere` (`nome`) VALUES ("Azione"),("Avventura"),("Fantascienza"),("Romantico"),("Sangue");
