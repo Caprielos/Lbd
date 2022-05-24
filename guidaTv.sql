@@ -26,6 +26,7 @@ CREATE TABLE `canale` (
     `nome` VARCHAR(64) NOT NULL UNIQUE,
     `numero` INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(`id`)
+    
 );
 
 CREATE TABLE `palinsesto` (
