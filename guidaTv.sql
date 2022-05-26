@@ -8,11 +8,8 @@ DROP TABLE IF EXISTS `palinsesto`;
 DROP TABLE IF EXISTS `programma`;
 DROP TABLE IF EXISTS `genere`;
 DROP TABLE IF EXISTS `persona`;
-DROP TABLE IF EXISTS `comprende`;
 DROP TABLE IF EXISTS `possiede`;
 DROP TABLE IF EXISTS `partecipa`;
-
--- INIZIO CREAZIONE TABELLE
 
 CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -29,15 +26,6 @@ CREATE TABLE `canale` (
     
 );
 
-CREATE TABLE `palinsesto` (
-	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`giorno` DATE NOT NULL,
-	`ora_inizio` TIME NOT NULL,
-	`ora_fine` TIME NOT NULL,
-    `id_canale` INTEGER UNSIGNED NOT NULL,
-	PRIMARY KEY(`id`)
-);
-
 CREATE TABLE `programma` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
 	`titolo` VARCHAR(64) NOT NULL,
@@ -47,6 +35,7 @@ CREATE TABLE `programma` (
 	`stagione` TINYINT,
 	`episodio` MEDIUMINT,
     `produttore` VARCHAR(50) NOT NULL,
+    `descrizione_episodio` VARCHAR(128),
 	`path` VARCHAR(255),
 	`immagine` LONGBLOB,
 	PRIMARY KEY(`id`)
@@ -62,14 +51,7 @@ CREATE TABLE `persona` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(64) NOT NULL,
     `cognome` VARCHAR(64) NOT NULL,
-    `ruolo` VARCHAR(32) NOT NULL,
     PRIMARY KEY(`id`)
-);
-
-CREATE TABLE `comprende` (
-	`id_palinsesto` INTEGER UNSIGNED NOT NULL,
-	`id_programma` INTEGER UNSIGNED NOT NULL,
-    PRIMARY KEY( `id_palinsesto`, `id_programma`)
 );
 
 CREATE TABLE `possiede` (
@@ -81,22 +63,37 @@ CREATE TABLE `possiede` (
 CREATE TABLE `partecipa` (
 	`id_programma` INTEGER UNSIGNED NOT NULL,
 	`id_persona` INTEGER UNSIGNED NOT NULL,
+    `ruolo` VARCHAR(32) NOT NULL,
     PRIMARY KEY(`id_programma`, `id_persona`)
 );
 
-ALTER TABLE `guida_tv`.`comprende` 
-ADD CONSTRAINT `id_palinsesto_programma`
-FOREIGN KEY (`id_palinsesto`)
-REFERENCES `guida_tv`.`palinsesto` (`id`)
-ON DELETE CASCADE
-ON UPDATE CASCADE;
+CREATE TABLE `palinsesto` (
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`giorno` DATE NOT NULL,
+	`ora_inizio` TIME NOT NULL,
+	`ora_fine` TIME NOT NULL,
+    `id_canale` INTEGER UNSIGNED NOT NULL,
+    `id_programma` INTEGER UNSIGNED NOT NULL,
+	PRIMARY KEY(`id`)
+);
 
-ALTER TABLE `guida_tv`.`comprende` 
-ADD CONSTRAINT `id_programma_palinsesto`
+
+-- > INIZIO FOREIGN KEY
+-- DA VEDERE GLI UPDATE E LE DELETE DI "PALINSESTO" ENTRAMBE LE FOREIGN
+-- IL TOOL DICEVA DI METTERE GLI INDEX
+ALTER TABLE `guida_tv`.`palinsesto` 
+ADD CONSTRAINT `id_canale_programma`
+FOREIGN KEY (`id_canale`)
+REFERENCES `guida_tv`.`canale` (`id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE `guida_tv`.`palinsesto` 
+ADD CONSTRAINT `id_programma_canale`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE CASCADE
-ON UPDATE CASCADE;
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
 
 ALTER TABLE `guida_tv`.`partecipa` 
 ADD CONSTRAINT `id_programma_persona`
@@ -126,6 +123,52 @@ REFERENCES `guida_tv`.`genere` (`id`)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
+-- > FINEFOREIGN KEY
+
+-- > INSERT
+INSERT INTO `guida_tv`.`utente` (`email`, `pwd`) VALUES ('g', 'g');
+INSERT INTO `guida_tv`.`utente` (`email`, `pwd`) VALUES ('a', 'a');
+
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 1', '1');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 2', '2');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 3', '3');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Canale 4', '4');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Canale 5', '5');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Italia 1', '6');
+
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Giallo');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Horror');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Pirati');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Montagna');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Collina');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Guerra');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Anime');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantascienza');
+
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Robert', 'De Niro');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Stefano', 'Fattore');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Tommaso', 'De Luca');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Terracina');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Main');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Giuseppe', 'Della Penna');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Amleto', 'Di Salle');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Massimo', 'Tivoli');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Pierluigi', 'Zobel');
+
+INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `produttore`) VALUES ('Film 1', '01:00:00', 'Descrizione 1', '1950-05-26', 'Io');
+INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `produttore`) VALUES ('Film 2', '01:00:15', 'Descrizione 2', '1951-05-26', 'Gatto');
+INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `produttore`) VALUES ('Film 3', '01:00:30', 'Descrizione 3', '1952-05-26', 'Io');
+INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `stagione`, `episodio`, `produttore`, `descrizione_episodio`) VALUES ('Serie 1', '01:15:00', 'Descrizione 4', '1953-05-26', '1', '6', 'Gatto', 'Descrizione Episodio');
+INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `stagione`, `episodio`, `produttore`, `descrizione_episodio`) VALUES ('Serie 2', '01:30:00', 'Descrizione 5', '1954-05-26', '5', '8', 'Io', 'Descrizione Episodio');
+
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-26', '00:00:00', '00:00:00', '1', '1');
+
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-27', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-26', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-27', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
 
 
-INSERT INTO `genere` (`nome`) VALUES ("Azione"),("Avventura"),("Fantascienza"),("Romantico"),("Sangue");
+
