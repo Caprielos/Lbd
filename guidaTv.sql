@@ -77,6 +77,21 @@ CREATE TABLE `palinsesto` (
 	PRIMARY KEY(`id`)
 );
 
+CREATE TABLE `canale_preferito` (
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte') NOT NULL,
+    `id_utente` INTEGER UNSIGNED NOT NULL,
+    `id_canale` INTEGER UNSIGNED NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `programma_preferito` (
+	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte') NOT NULL,
+    `id_utente` INTEGER UNSIGNED NOT NULL,
+    `id_programma` INTEGER UNSIGNED NOT NULL,
+	PRIMARY KEY(`id`)
+);
 
 -- > INIZIO FOREIGN KEY
 -- DA VEDERE GLI UPDATE E LE DELETE DI "PALINSESTO" ENTRAMBE LE FOREIGN
@@ -85,15 +100,15 @@ ALTER TABLE `guida_tv`.`palinsesto`
 ADD CONSTRAINT `id_canale_programma`
 FOREIGN KEY (`id_canale`)
 REFERENCES `guida_tv`.`canale` (`id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE NO ACTION 	--
+ON UPDATE NO ACTION; 	--
 
 ALTER TABLE `guida_tv`.`palinsesto` 
 ADD CONSTRAINT `id_programma_canale`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE NO ACTION		--
+ON UPDATE NO ACTION;	--
 
 ALTER TABLE `guida_tv`.`partecipa` 
 ADD CONSTRAINT `id_programma_persona`
@@ -122,6 +137,35 @@ FOREIGN KEY (`id_genere`)
 REFERENCES `guida_tv`.`genere` (`id`)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
+
+ALTER TABLE `guida_tv`.`canale_preferito` 
+ADD CONSTRAINT `id_utente_canale`
+FOREIGN KEY (`id_utente`)
+REFERENCES `guida_tv`.`utente` (`id`)
+ON DELETE NO ACTION		--
+ON UPDATE NO ACTION;	--
+
+ALTER TABLE `guida_tv`.`canale_preferito` 
+ADD CONSTRAINT `id_canale_utente`
+FOREIGN KEY (`id_canale`)
+REFERENCES `guida_tv`.`canale` (`id`)
+ON DELETE NO ACTION		--
+ON UPDATE NO ACTION;	--
+
+ALTER TABLE `guida_tv`.`programma_preferito` 
+ADD CONSTRAINT `id_utente_programma`
+FOREIGN KEY (`id_utente`)
+REFERENCES `guida_tv`.`utente` (`id`)
+ON DELETE NO ACTION		--
+ON UPDATE NO ACTION;	--
+
+ALTER TABLE `guida_tv`.`programma_preferito` 
+ADD CONSTRAINT `id_programma_utente`
+FOREIGN KEY (`id_programma`)
+REFERENCES `guida_tv`.`programma` (`id`)
+ON DELETE NO ACTION		--
+ON UPDATE NO ACTION;	--
+
 
 -- > FINEFOREIGN KEY
 
