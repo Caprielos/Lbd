@@ -107,7 +107,7 @@ ALTER TABLE `guida_tv`.`palinsesto`
 ADD CONSTRAINT `id_programma_canale`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE NO ACTION		--
+ON DELETE CASCADE		--
 ON UPDATE NO ACTION;	--
 
 ALTER TABLE `guida_tv`.`partecipa` 
@@ -163,7 +163,7 @@ ALTER TABLE `guida_tv`.`programma_preferito`
 ADD CONSTRAINT `id_programma_utente`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE NO ACTION		--
+ON DELETE CASCADE		--
 ON UPDATE NO ACTION;	--
 
 
@@ -206,13 +206,23 @@ INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_usci
 INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`, `stagione`, `episodio`, `produttore`, `descrizione_episodio`) VALUES ('Serie 2', '01:30:00', 'Descrizione 5', '1954-05-26', '5', '8', 'Io', 'Descrizione Episodio');
 
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-26', '00:00:00', '00:00:00', '1', '1');
-
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-27', '00:00:00', '00:00:00', '1', '1');
-INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
-INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-26', '00:00:00', '00:00:00', '1', '1');
-INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-27', '00:00:00', '00:00:00', '1', '1');
-INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
-INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '2', '2');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-26', '00:00:00', '00:00:00', '3', '3');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-27', '00:00:00', '00:00:00', '4', '4');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '5', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-28', '00:00:00', '00:00:00', '1', '2');
 
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('1', '1');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('2', '1');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '2');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '3');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('4', '1');
 
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('1', '1', 'aa');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('2', '1', 'bb');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('3', '1', 'cc');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('4', '2', 'dd');
+
+DELETE FROM `guida_tv`.`programma` WHERE (`id` = '1');
 
