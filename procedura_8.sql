@@ -26,5 +26,5 @@ END $
 
 DELIMITER $
 
-CALL `query_8` ("Robert", "De Niro", "Film 1", @res);
+CALL `query_8` ("Robert", "De Niro", "", @res);
 SELECT @res

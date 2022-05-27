@@ -1,34 +1,36 @@
-DROP PROCEDURE IF EXISTS `query_3`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_3`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_3` ( IN nome_canale_param VARCHAR(64), OUT result BOOLEAN)
+CREATE PROCEDURE `guida_tv`.`query_3` ( IN nome_canale_param VARCHAR(64) )
 
 BEGIN
-	
-    DECLARE x INTEGER UNSIGNED;
-    SET x =  (SELECT c.id FROM canale c WHERE nome_canale_param = c.nome); -- HO L' ID DEL CANALE
     
-    -- SELECT * FROM programma prog JOIN palinsesto pal ON prog.id = pal.id_programma JOIN canale can ON can.id = pal.id_canale WHERE pal.giorno = curdate()
- 
+	SELECT DISTINCT pal.ora_inizio,
+					prog.titolo, 
+                    pal.ora_fine, 
+                    gen.nome 
+	FROM `guida_tv`.palinsesto pal 
     
-     SELECT * FROM programma prog JOIN palinsesto pal ON prog.id = pal.id_programma JOIN canale can ON can.id = pal.id_canale
-     JOIN possiede aa ON aa.id_programma = pal.id_programma JOIN genere gen ON gen.id = aa.id_programma WHERE pal.giorno = curdate() ;
+		JOIN `guida_tv`.canale can ON pal.id_canale = ( SELECT c.id FROM canale c WHERE c.nome = nome_canale_param )
+		JOIN `guida_tv`.possiede pos ON pos.id_programma = pal.id_programma 
+		JOIN `guida_tv`.genere gen ON pos.id_genere = gen.id
+        JOIN `guida_tv`.programma prog ON prog.id = pal.id_programma
+			
+    WHERE pal.giorno = curdate() AND can.nome = nome_canale_param
+    ORDER BY pal.ora_inizio ASC;
     
-	SET result = true;
+    
+    
+    -- SELECT * FROM `guida_tv`.programma prog 
+		-- JOIN `guida_tv`.palinsesto pal ON prog.id = pal.id_programma 
+		 -- JOIN `guida_tv`.canale can ON can.nome = nome_canale_param
+		 -- JOIN `guida_tv`.possiede aa ON aa.id_programma = pal.id_programma 
+		 -- JOIN `guida_tv`.genere gen ON gen.id = aa.id_programma 
+     -- WHERE pal.giorno = curdate() ;
     
 END $
 
 DELIMITER $
 
-CALL `query_3` ("Rai 1", @res);
-SELECT @res
-
-
--- SELECT * FROM canale c JOIN palinsesto p  ON p.id_canale = c.id JOIN programma pr ON pr.id = p.id;
-
--- SELECT c.id FROM canale c WHERE "Rai 1" = c.nome -- CON QUESTA MI PRENDO IL CANALE
-    
--- SELECT c.nome FROM canale c JOIN palinsesto p  ON p.id_canale = x;
-    
--- SELECT pr.titolo FROM canale c JOIN palinsesto p ON p.id_canale = x JOIN programma pr ON p.id_programma = pr.id; 
+CALL `query_3` ("Rai 1");

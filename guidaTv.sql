@@ -224,5 +224,6 @@ INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUE
 INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('3', '1', 'cc');
 INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('4', '2', 'dd');
 
-DELETE FROM `guida_tv`.`programma` WHERE (`id` = '1');
+-- E LA 6
+-- DELETE FROM `guida_tv`.`programma` WHERE (`id` = '1');
 
