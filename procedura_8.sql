@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS `query_8`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_8` (IN nome_persona_param  VARCHAR(64), IN cognome_persona_param VARCHAR(64), IN titolo_programma_param VARCHAR(64), OUT result BOOLEAN)
+CREATE PROCEDURE `query_8` ( IN nome_persona_param  VARCHAR(64), IN cognome_persona_param VARCHAR(64), IN titolo_programma_param VARCHAR(64), OUT result BOOLEAN )
        
 BEGIN
 	IF (titolo_programma_param != "" )
