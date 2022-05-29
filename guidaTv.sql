@@ -79,7 +79,7 @@ CREATE TABLE `palinsesto` (
 
 CREATE TABLE `canale_preferito` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte') NOT NULL,
+	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte'),
     `id_utente` INTEGER UNSIGNED NOT NULL,
     `id_canale` INTEGER UNSIGNED NOT NULL,
 	PRIMARY KEY(`id`)
@@ -87,7 +87,7 @@ CREATE TABLE `canale_preferito` (
 
 CREATE TABLE `programma_preferito` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte') NOT NULL,
+	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte'),
     `id_utente` INTEGER UNSIGNED NOT NULL,
     `id_programma` INTEGER UNSIGNED NOT NULL,
 	PRIMARY KEY(`id`)
@@ -224,8 +224,11 @@ INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUE
 INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('3', '1', 'cc');
 INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('4', '2', 'dd');
 
-INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Mattino', 1, 1);
-INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Mattino', 1, 2);
+INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('1', 1, 1);
+INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('2', 2, 2);
+
+INSERT INTO `guida_tv`.`programma_preferito` (`fascia_oraria`, `id_utente`, `id_programma`) VALUES ('3', '1', '2');
+INSERT INTO `guida_tv`.`programma_preferito` (`fascia_oraria`, `id_utente`, `id_programma`) VALUES ('4', '2', '4');
 
 
 -- E LA 6
