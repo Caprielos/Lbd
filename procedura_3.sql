@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS `guida_tv`.`query_3`;
 
 DELIMITER $
 
-CREATE PROCEDURE `guida_tv`.`query_3` ( IN nome_canale_param VARCHAR(64) )
+CREATE PROCEDURE `guida_tv`.`query_3` (IN nome_canale_param VARCHAR(64))
 
 BEGIN
     
@@ -33,4 +33,4 @@ END $
 
 DELIMITER $
 
-CALL `query_3` ("Rai 1");
+CALL `query_3` ("Rai 2");

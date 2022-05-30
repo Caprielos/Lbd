@@ -10,8 +10,7 @@ CREATE PROCEDURE `inserisci_film` (IN titolo_param VARCHAR(64),
 								   IN anno_uscita_param DATE,
 								   IN path_param VARCHAR(255),
                                    IN produttore_param VARCHAR(50),
-                                   IN descrizione_episodio_param VARCHAR(128),
-								   IN immagine_param LONGBLOB,
+                                   IN immagine_param LONGBLOB,
 								   OUT result BOOLEAN)
 BEGIN
 	IF EXISTS (SELECT u.titolo FROM programma u WHERE u.titolo = titolo_param AND u.anno_uscita = anno_uscita_param AND u.produttore = produttore_param)
@@ -20,7 +19,7 @@ BEGIN
 		ELSE
         
 			INSERT INTO `programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`, `path`, `immagine`) 
-			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, descrizione_episodio, path_param, immagine_param);
+			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, NULL, path_param, immagine_param);
             
             SET result = true;
             
@@ -57,3 +56,4 @@ BEGIN
 END $
 
 DELIMITER $
+

@@ -19,4 +19,4 @@ END $
 
 DELIMITER $
 
-CALL `query_10` ("Canale 4", '2022-05-27', @res);
+CALL `query_10` ("Rai 1", '2022-05-30', @res);

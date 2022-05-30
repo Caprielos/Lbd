@@ -16,9 +16,9 @@ BEGIN
 		ELSE
 			-- TROVO I FILM SOLO CON NOME, COGNOME
 			
-            SELECT * FROM programma prog JOIN partecipa aa ON aa.id_programma = prog.id 
-            JOIN persona peopl ON peopl.nome = nome_persona_param AND peopl.cognome = cognome_persona_param;
-            
+            SELECT prog.titolo FROM `guida_tv`.programma prog
+            JOIN `guida_tv`.partecipa aa ON aa.id_programma = prog.id 
+            JOIN `guida_tv`.persona peopl ON peopl.nome = nome_persona_param AND peopl.cognome = cognome_persona_param;
             SET result = false;
             
 		END IF;
@@ -26,5 +26,5 @@ END $
 
 DELIMITER $
 
-CALL `query_8` ("Robert", "De Niro", "", @res);
+CALL `query_8` ("Amleto", "Di Salle", "", @res);
 SELECT @res

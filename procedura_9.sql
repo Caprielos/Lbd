@@ -27,8 +27,8 @@ END $
 
 DELIMITER $
 
-CALL `query_9` ('2022-05-26');
-CALL `query_9` ('2022-05-27');
-CALL `query_9` ('2022-05-28');
-CALL `query_9` ('2022-05-29');
+CALL `query_9` ('2022-05-30');
+CALL `query_9` ('2022-05-30');
+CALL `query_9` ('2022-05-30');
+CALL `query_9` ('2022-05-30');
 
