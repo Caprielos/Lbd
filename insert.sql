@@ -56,6 +56,14 @@ INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_can
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-30', '00:00:00', '00:00:00', '3', '12');
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-30', '00:00:00', '00:00:00', '3', '11');
 
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '1');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '2');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '3');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '4');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '5');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '6');
+INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-31', '00:00:00', '00:00:00', '4', '7');
+
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-06-01', '00:00:00', '00:00:00', '4', '1');
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-06-01', '00:00:00', '00:00:00', '4', '2');
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-06-01', '00:00:00', '00:00:00', '4', '3');
@@ -128,7 +136,6 @@ INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Tommaso', 'De Luca
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Terracina');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Main');
 
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Amleto', 'Di Salle');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Massimo', 'Tivoli');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Pierluigi', 'Zobel');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Federica', 'Cucchiella');
