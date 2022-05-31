@@ -19,11 +19,11 @@ BEGIN
 	JOIN `guida_tv`.palinsesto pal ON pal.id_programma = prog.id
 	JOIN `guida_tv`.possiede aa ON aa.id_programma = prog.id
 	JOIN `guida_tv`.genere gen ON gen.id = aa.id_genere 
-	WHERE gen.id = (SELECT g.id FROM `guida_tv`.genere g WHERE g.nome = genere_param) AND pal.giorno >= curdate() AND pal.giorno <= date_add(curdate(), INTERVAL 7 DAY);
+	WHERE gen.id = (SELECT g.id FROM `guida_tv`.genere g WHERE g.nome = genere_param)
+    AND pal.giorno >= curdate() AND pal.giorno <= date_add(curdate(), INTERVAL 7 DAY);
          
 END $
 
 DELIMITER $
-
 
 CALL `query_7` ("Drammatico");

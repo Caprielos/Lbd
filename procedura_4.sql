@@ -6,7 +6,6 @@ CREATE PROCEDURE `query_4` ( IN nome_serie_param VARCHAR(64))
 
 BEGIN
 	
- 
     SELECT  can.nome, pal.giorno, pal.ora_inizio, pal.ora_fine, prog.id
     FROM `guida_tv`.palinsesto pal
 	JOIN `guida_tv`.programma prog ON pal.id_programma = prog.id

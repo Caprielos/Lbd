@@ -9,12 +9,10 @@ BEGIN
 	SELECT DISTINCT SUM(durata)
     -- SELECT SEC_TO_TIME(durata / 100)
 	FROM `guida_tv`.palinsesto pal 
-    
-		JOIN `guida_tv`.canale can ON pal.id_canale = ( SELECT c.id FROM canale c WHERE c.nome = nome_canale_param )
-        JOIN `guida_tv`.programma prog ON prog.id = pal.id_programma
-        WHERE pal.giorno = giorno_param AND can.nome = nome_canale_param;
+	JOIN `guida_tv`.canale can ON pal.id_canale = ( SELECT c.id FROM canale c WHERE c.nome = nome_canale_param )
+	JOIN `guida_tv`.programma prog ON prog.id = pal.id_programma
+    WHERE pal.giorno = giorno_param AND can.nome = nome_canale_param;
 		
-
 END $
 
 DELIMITER $
