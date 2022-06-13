@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS `query_7`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_7`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_7` ( IN genere_param VARCHAR(64) )
+-- 7 > [Ricerca dei film di un certo genere in programma nei prossimi sette giorni.] < --
+CREATE PROCEDURE `guida_tv`.`query_7` ( IN genere_param VARCHAR(64) )
 
 BEGIN
 	
@@ -26,4 +27,4 @@ END $
 
 DELIMITER $
 
-CALL `query_7` ("Drammatico");
+CALL `query_7` ("Biografico");

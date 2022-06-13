@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS `query_8`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_8`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_8` ( IN nome_persona_param  VARCHAR(64), IN cognome_persona_param VARCHAR(64), IN titolo_programma_param VARCHAR(64))
+-- 8 > [Ricerca dei programmi a cui partecipa a qualsiasi titolo (o con un titolo specificato) una certa persona.] < --
+CREATE PROCEDURE `guida_tv`.`query_8` ( IN nome_persona_param  VARCHAR(64), IN cognome_persona_param VARCHAR(64), IN titolo_programma_param VARCHAR(64))
        
 BEGIN
 		            
@@ -31,8 +32,6 @@ DELIMITER $
 
 CALL `query_8` ("Amleto", "Di Salle", "");
 
-
-				
             	-- SELECT DISTINCT * FROM `guida_tv`.persona p WHERE p.nome = nome_persona_param AND p.cognome = cognome_persona_param;
 
 				-- SELECT DISTINCT * FROM programma prog JOIN partecipa aa ON aa.id_programma = prog.id 

@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS `query_4`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_4`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_4` ( IN nome_serie_param VARCHAR(64))
+-- 4 > [Lista dei canali/date/orari in cui sono trasmessi gli episodi di una certa serie] < --
+CREATE PROCEDURE `guida_tv`.`query_4` ( IN nome_serie_param VARCHAR(64))
 
 BEGIN
 	

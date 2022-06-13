@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS `guida_tv`.`query_3`;
 
 DELIMITER $
 
+-- 3 > [Generazione del palinsesto odierno di un canale.] < --
 CREATE PROCEDURE `guida_tv`.`query_3` (IN nome_canale_param VARCHAR(64))
 
 BEGIN
@@ -23,4 +24,4 @@ END $
 
 DELIMITER $
 
-CALL `query_3` ("Canale 4");
+CALL `query_3` ("Rai 2");

@@ -1,18 +1,25 @@
-DROP PROCEDURE IF EXISTS `query_5`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`canali_preferiti`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`programmi_preferiti`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_5` ()
+-- 5A > [Lista dei canali maggiormente “preferiti” dagli utenti.] < --
+CREATE PROCEDURE `guida_tv`.`canali_preferiti` ()
 
 BEGIN
 	
-    SELECT * FROM  `guida_tv`.canale_preferito JOIN utente u ON u.id = canale_preferito.id_utente;
-    
-    SELECT * FROM  `guida_tv`.programma_preferito JOIN utente u ON u.id = programma_preferito.id_utente;
-    
+    SELECT * FROM  `guida_tv`.canale_preferito JOIN utente u ON u.id = canale_preferito.id_utente;  
     
 END $
 
-DELIMITER $
+-- 5B > [Lista dei programmi maggiormente “preferiti” dagli utenti.] < --
+CREATE PROCEDURE `guida_tv`.`programmi_preferiti` ()
 
-CALL `query_5` ();
+BEGIN
+	
+    SELECT * FROM  `guida_tv`.programma_preferito JOIN utente u ON u.id = programma_preferito.id_utente;
+    
+END $
+
+
+DELIMITER $

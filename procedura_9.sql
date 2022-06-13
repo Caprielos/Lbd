@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS `query_9`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_9`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_9` ( IN giorno_param DATE )
+-- 9 > [Numero programmi distinti trasmessi da ciascuna emittente in un determinato giorno.] < --
+CREATE PROCEDURE `guida_tv`.`query_9` ( IN giorno_param DATE )
 
 BEGIN
 	
@@ -25,5 +26,5 @@ END $
 
 DELIMITER $
 
-CALL `query_9` ('2022-05-30');
+CALL `query_9` ('2022-06-08');
 

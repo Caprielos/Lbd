@@ -10,6 +10,9 @@ DROP TABLE IF EXISTS `genere`;
 DROP TABLE IF EXISTS `persona`;
 DROP TABLE IF EXISTS `possiede`;
 DROP TABLE IF EXISTS `partecipa`;
+DROP TABLE IF EXISTS `canale_preferito`;
+DROP TABLE IF EXISTS `programma_preferito`;
+
 
 CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,

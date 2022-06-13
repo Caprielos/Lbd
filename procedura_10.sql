@@ -1,8 +1,9 @@
-DROP PROCEDURE IF EXISTS `query_10`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_10`;
 
 DELIMITER $
 
-CREATE PROCEDURE `query_10` ( IN nome_canale_param VARCHAR(64), IN giorno_param DATE, OUT res INTEGER(50) )
+-- 10 > [Minuti totali di programmazione per un certo canale in un certo giorno.] < --
+CREATE PROCEDURE `guida_tv`.`query_10` ( IN nome_canale_param VARCHAR(64), IN giorno_param DATE, OUT res INTEGER(50) )
 
 BEGIN
 	   
@@ -17,4 +18,4 @@ END $
 
 DELIMITER $
 
-CALL `query_10` ("Rai 1", '2022-05-30', @res);
+CALL `query_10` ("Rai 2", '2022-06-08', @res);
