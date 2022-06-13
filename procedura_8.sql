@@ -30,7 +30,7 @@ END $
 
 DELIMITER $
 
-CALL `query_8` ("Amleto", "Di Salle", "");
+CALL `query_8` ("Amleto", "Di Salle", "Signore Degli Anelli");
 
             	-- SELECT DISTINCT * FROM `guida_tv`.persona p WHERE p.nome = nome_persona_param AND p.cognome = cognome_persona_param;
 

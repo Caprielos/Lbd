@@ -27,4 +27,4 @@ END $
 
 DELIMITER $
 
-CALL `query_7` ("Biografico");
+CALL `query_7` ("Guerra");
