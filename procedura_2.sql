@@ -17,7 +17,6 @@ BEGIN
 		THEN
 			SET result = false;
 		ELSE
-        
 			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
 											    `path`, `immagine`) 
 			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, NULL, path_param, immagine_param);
@@ -46,7 +45,6 @@ BEGIN
 		THEN
 			SET result = false;
 		ELSE
-        
 			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
 											    `path`, `immagine`) 
 			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, stagione_param, episodio_param, produttore_param, descrizione_episodio,

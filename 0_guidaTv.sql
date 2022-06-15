@@ -16,17 +16,16 @@ DROP TABLE IF EXISTS `programma_preferito`;
 
 CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `email` VARCHAR(64) NOT NULL UNIQUE,
+    `email` VARCHAR(64) NOT NULL,
     `pwd` VARCHAR(32) NOT NULL,
     PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `canale` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `nome` VARCHAR(64) NOT NULL UNIQUE,
+    `nome` VARCHAR(64) NOT NULL,
     `numero` INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(`id`)
-    
 );
 
 CREATE TABLE `programma` (
@@ -46,7 +45,7 @@ CREATE TABLE `programma` (
 
 CREATE TABLE `genere` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`nome` VARCHAR(64) NOT NULL UNIQUE,
+	`nome` VARCHAR(64) NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
@@ -54,6 +53,7 @@ CREATE TABLE `persona` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(64) NOT NULL,
     `cognome` VARCHAR(64) NOT NULL,
+    `data_di_nascita` DATE NOT NULL,
     PRIMARY KEY(`id`)
 );
 
@@ -171,4 +171,18 @@ ON UPDATE NO ACTION;	--
 
 -- E LA 6
 -- DELETE FROM `guida_tv`.`programma` WHERE (`id` = '1');
+
+-- VINCOLI
+
+ALTER TABLE `guida_tv`.`utente` 
+ADD CONSTRAINT email_utente_unique UNIQUE (`email`);
+
+ALTER TABLE `guida_tv`.`canale` 
+ADD CONSTRAINT nome_canale_unique UNIQUE (`nome`);
+
+ALTER TABLE `guida_tv`.`genere` 
+ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
+
+
+
 
