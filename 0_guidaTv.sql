@@ -23,8 +23,8 @@ CREATE TABLE `utente` (
 
 CREATE TABLE `canale` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `nome` VARCHAR(64) NOT NULL,
-    `numero` INTEGER UNSIGNED NOT NULL,
+    `nome` VARCHAR(64) NOT NULL UNIQUE,
+    `numero` INTEGER UNSIGNED NOT NULL UNIQUE,
     PRIMARY KEY(`id`)
 );
 
@@ -180,8 +180,13 @@ ADD CONSTRAINT email_utente_unique UNIQUE (`email`);
 ALTER TABLE `guida_tv`.`canale` 
 ADD CONSTRAINT nome_canale_unique UNIQUE (`nome`);
 
+ALTER TABLE `guida_tv`.`canale` 
+ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
+
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
+
+
 
 
 
