@@ -24,4 +24,4 @@ END $
 
 DELIMITER $
 
-CALL `query_3` ("Rai 2");
+CALL `query_3` ("Rai 1");

@@ -1,31 +1,32 @@
--- > INSERT
-
-CALL `guida_tv`.inserisci_film("Rambo 1", '01:15:00', "Rambo contro tutti", '2000-07-17', "Path esterno", "Produttore 1", NULL, @res);
-CALL `guida_tv`.inserisci_film("Rocky", '01:41:00', "Pugilato", '2000-08-17', "Path esterno", "Produttore 1", NULL, @res);
-CALL `guida_tv`.inserisci_film("Aladino", '02:00:00', "Deserto", '2000-09-17', "Path esterno", "Produttore 2", NULL, @res);
-CALL `guida_tv`.inserisci_film("Io sono leggenda", '02:50:00', "Uno contro zombie", '2000-010-17', "Path esterno", "Produttore 3", NULL, @res);   
-CALL `guida_tv`.inserisci_film("Film 1", '01:00:00', "Descrizione 1", '2000-10-17', "Path esterno", "Produttore 4", NULL, @res);
-
-CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 1, "Produttore 5", "Muore tanta gente", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 2, "Produttore 5", "Muore tanta gente", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 3, "Produttore 5", "Muore tanta gente", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 4, "Produttore 5", "Muore tanta gente", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 5, "Produttore 5", "Muore tanta gente", "Link esterno", NULL, @res);
-
-CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '1990-01-01', 1, 1, "Produttore 6", "La compagnia dell'anello", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '2000-02-02', 1, 2, "Produttore 6", "Le due torri", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '2002-03-03', 1, 3, "Produttore 6", "Il ritorno del re", "Link esterno", NULL, @res);
-
-CALL `guida_tv`.inserisci_episodio("Lo hobbit", '02:45:00', "Serie prima del signore degli anelli", '2018-08-01', 1, 1, "Produttore 7", "Un viaggio inaspettato", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Lo hobbit", '03:45:00', "Serie prima del signore degli anelli", '2019-09-02', 1, 2, "Produttore 7", "La desolazione di smaug", "Link esterno", NULL, @res);
-CALL `guida_tv`.inserisci_episodio("Lo hobbit", '01:45:00', "Serie prima del signore degli anelli", '2020-10-03', 1, 3, "Produttore 7", "La battaglia delle 5 armate", "Link esterno", NULL, @res);
+INSERT INTO `guida_tv`.`utente` (`email`, `pwd`) VALUES ('diegidiogabriele@gmail.com', '1234');
+INSERT INTO `guida_tv`.`utente` (`email`, `pwd`) VALUES ('andreasegnalini@gmail.com', '1234');
 
 INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 1', '1');
 INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 2', '2');
 INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 3', '3');
-INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Canale 4', '4');
+INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Rai 4', '4');
 INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Canale 5', '5');
 INSERT INTO `guida_tv`.`canale` (`nome`, `numero`) VALUES ('Italia 1', '6');
+
+CALL `guida_tv`.inserisci_film("Rambo 1", '01:15:00', "Rambo contro tutti", '2000-07-17', "Path esterno", "Produttore 1", NULL);
+CALL `guida_tv`.inserisci_film("Rocky", '01:41:00', "Pugilato", '2000-08-17', "Path esterno", "Produttore 1", NULL);
+CALL `guida_tv`.inserisci_film("Aladino", '02:00:00', "Deserto", '2000-09-17', "Path esterno", "Produttore 2", NULL);
+CALL `guida_tv`.inserisci_film("Io sono leggenda", '02:50:00', "Uno contro zombie", '2000-010-17', "Path esterno", "Produttore 3", NULL);   
+CALL `guida_tv`.inserisci_film("Film 1", '01:00:00', "Descrizione 1", '2000-10-17', "Path esterno", "Produttore 4", NULL);
+
+CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 1, "Produttore 5", "Muore tanta gente", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 2, "Produttore 5", "Muore tanta gente", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 3, "Produttore 5", "Muore tanta gente", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 4, "Produttore 5", "Muore tanta gente", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Games of trones", '00:45:00', "Serie sui ghiacci", '2017-02-01', 1, 5, "Produttore 5", "Muore tanta gente", "Link esterno", NULL);
+
+CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '1990-01-01', 1, 1, "Produttore 6", "La compagnia dell'anello", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '2000-02-02', 1, 2, "Produttore 6", "Le due torri", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Signore Degli Anelli", '03:45:00', "Serie su un anello", '2002-03-03', 1, 3, "Produttore 6", "Il ritorno del re", "Link esterno", NULL);
+
+CALL `guida_tv`.inserisci_episodio("Lo hobbit", '02:45:00', "Serie prima del signore degli anelli", '2018-08-01', 1, 1, "Produttore 7", "Un viaggio inaspettato", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Lo hobbit", '03:45:00', "Serie prima del signore degli anelli", '2019-09-02', 1, 2, "Produttore 7", "La desolazione di smaug", "Link esterno", NULL);
+CALL `guida_tv`.inserisci_episodio("Lo hobbit", '01:45:00', "Serie prima del signore degli anelli", '2020-10-03', 1, 3, "Produttore 7", "La battaglia delle 5 armate", "Link esterno", NULL);
 
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-30', '00:00:00', '00:00:00', '1', '1');
 INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`) VALUES ('2022-05-30', '00:00:00', '00:00:00', '1', '2');
@@ -125,28 +126,28 @@ INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Storico');
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Western');
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Erotico');
 
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Giuseppe', 'Della Penna');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Stefano', 'Fattore');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Tommaso', 'De Luca');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Terracina');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Marco', 'Main');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`, `data_di_nascita`) VALUES ('Giuseppe', 'Della Penna', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Stefano', 'Fattore', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Tommaso', 'De Luca', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Marco', 'Terracina', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Marco', 'Main', '2022-06-01');
 
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Massimo', 'Tivoli');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Pierluigi', 'Zobel');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Federica', 'Cucchiella');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Paolo', 'De Fabritiis');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Massimo', 'Tivoli', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Pierluigi', 'Zobel', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Federica', 'Cucchiella', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Paolo', 'De Fabritiis', '2022-06-01');
 
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Mauro', 'Zannetti');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Poalo', 'Di Stefano');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Roberto', 'Carapellucci');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Mario', 'Pelino');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Amleto', 'Di Salle');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Mauro', 'Zannetti', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Poalo', 'Di Stefano', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Roberto', 'Carapellucci', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Mario', 'Pelino', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Amleto', 'Di Salle', '2022-06-01');
 
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Elisabetta', 'Santi');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Antonio', 'Ometto');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Gabriele', 'Curci');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Elia', 'Palange');
-INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`) VALUES ('Fulvio', 'Zuanni');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Elisabetta', 'Santi', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Antonio', 'Ometto', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Gabriele', 'Curci', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Elia', 'Palange', '2022-06-01');
+INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Fulvio', 'Zuanni', '2022-06-01');
 
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('1', '10');
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('2', '9');

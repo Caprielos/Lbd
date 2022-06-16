@@ -7,7 +7,8 @@ CREATE PROCEDURE `guida_tv`.`query_7` ( IN genere_param VARCHAR(64) )
 
 BEGIN
 	
-	SELECT DISTINCT	prog.titolo,
+	SELECT DISTINCT	pal.giorno,
+					prog.titolo,
 					prog.durata,
 					prog.descizione,
 					prog.anno_uscita,
