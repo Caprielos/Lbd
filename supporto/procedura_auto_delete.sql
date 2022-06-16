@@ -1,0 +1,21 @@
+DROP EVENT `entity_update`;
+
+DELIMITER $
+
+CREATE 
+    EVENT `entity_update` 
+    ON SCHEDULE EVERY 7 DAY STARTS '2022-06-01 03:00:00'
+    
+    DO BEGIN    
+		
+		DECLARE id_programma_da_cancellare INTEGER UNSIGNED;
+        DECLARE id_palinsesto_da_cancellare INTEGER UNSIGNED;
+        
+        -- MI DEVO PRENDERE IL FILM DAL PALINSESTO PIU PICCOLO E POI VEDERE 
+        -- SE LUI NON STA NEI PALINSESTI PER 7 GIORNI SUCCESSIVI E POI SE NON CI STA LO POSSO CANCELLARE
+        
+        
+		
+
+    END $
+DELIMITER $;

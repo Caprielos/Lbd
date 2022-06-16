@@ -185,9 +185,3 @@ ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
 
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
-
-
-
-
-
-

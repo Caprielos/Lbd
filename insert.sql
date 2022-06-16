@@ -1,10 +1,5 @@
 -- > INSERT
 
-CALL `guida_tv`.signUp("email 1", "pwd1", @res);
-CALL `guida_tv`.signUp("email 2", "pwd2", @res);
-CALL `guida_tv`.signUp("segna", "segna", @res);
-CALL `guida_tv`.signUp("gabry", "gabry", @res);
-
 CALL `guida_tv`.inserisci_film("Rambo 1", '01:15:00', "Rambo contro tutti", '2000-07-17', "Path esterno", "Produttore 1", NULL, @res);
 CALL `guida_tv`.inserisci_film("Rocky", '01:41:00', "Pugilato", '2000-08-17', "Path esterno", "Produttore 1", NULL, @res);
 CALL `guida_tv`.inserisci_film("Aladino", '02:00:00', "Deserto", '2000-09-17', "Path esterno", "Produttore 2", NULL, @res);
