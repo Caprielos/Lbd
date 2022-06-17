@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS `partecipa`;
 DROP TABLE IF EXISTS `canale_preferito`;
 DROP TABLE IF EXISTS `programma_preferito`;
 
-
 CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(64) NOT NULL,
@@ -98,7 +97,6 @@ CREATE TABLE `programma_preferito` (
 
 -- > INIZIO FOREIGN KEY
 -- DA VEDERE GLI UPDATE E LE DELETE DI "PALINSESTO" ENTRAMBE LE FOREIGN
--- IL TOOL DICEVA DI METTERE GLI INDEX
 ALTER TABLE `guida_tv`.`palinsesto` 
 ADD CONSTRAINT `id_canale_programma`
 FOREIGN KEY (`id_canale`)
@@ -166,11 +164,8 @@ ALTER TABLE `guida_tv`.`programma_preferito`
 ADD CONSTRAINT `id_programma_utente`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE NO ACTION		--
-ON UPDATE NO ACTION;	--
-
--- E LA 6
--- DELETE FROM `guida_tv`.`programma` WHERE (`id` = '1');
+ON DELETE CASCADE		--
+ON UPDATE CASCADE;	--
 
 -- VINCOLI
 
@@ -191,4 +186,40 @@ ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
 
 ALTER TABLE `guida_tv`.`programma_preferito` 
 ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
+
+-- TRIGGER
+
+DROP TRIGGER IF EXISTS `guida_tv`.`trigger_email`;
+DROP TRIGGER IF EXISTS `guida_tv`.`trigger_actor`;
+DROP TRIGGER IF EXISTS `guida_tv`.`trigger_palinsesto`;
+DROP TRIGGER IF EXISTS `guida_tv`.`trigger_programma_preferito`;
+
+DELIMITER $
+
+-- > [Trigger per validare l' inserimento di un utente.] < --
+CREATE TRIGGER `trigger_email` BEFORE INSERT ON `guida_tv`.`utente` FOR EACH ROW
+	BEGIN
+		CALL `guida_tv`.`validate_email`(NEW.email, NEW.pwd);
+END$
+
+-- > [Trigger per validare l'inserimento di un attore.] < --
+CREATE TRIGGER `trigger_actor` BEFORE INSERT ON `guida_tv`.`persona` FOR EACH ROW
+	BEGIN
+		CALL `guida_tv`.`validate_actor`(NEW.nome, NEW.cognome, NEW.data_di_nascita);
+END$
+
+-- > [Trigger per validare l'inserimento di un palinsesto.] < --
+CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR EACH ROW
+	BEGIN
+		CALL `guida_tv`.`validate_palinsesto`(NEW.giorno, NEW.ora_inizio, NEW.ora_fine, NEW.id_programma, NEW.id_canale);
+END$
+
+-- > [Trigger per : una volta cancellato un programma, si cancella anche l'id dalla tabella programma preferito] < --
+CREATE TRIGGER `trigger_programma_preferito` BEFORE DELETE ON `guida_tv`.`programma_preferito` FOR EACH ROW
+	BEGIN
+		
+END$
+
+
+DELIMITER $
 

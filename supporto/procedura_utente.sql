@@ -9,6 +9,7 @@ CREATE PROCEDURE `validate_email`(
 )
 
 BEGIN
+
 	IF (SELECT email_param NOT REGEXP '^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9._-]@[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]\\.[a-zA-Z]{2,63}$')
 		THEN
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email inserita non corretta';

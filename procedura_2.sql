@@ -20,7 +20,7 @@ BEGIN
 											    `path`, `immagine`) 
 			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, NULL, path_param, immagine_param);
             
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Film inserito con successo';
+			-- SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Film inserito con successo';
             
 		END IF;
 END $
@@ -48,7 +48,7 @@ BEGIN
 			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, stagione_param, episodio_param, produttore_param, descrizione_episodio,
 				    path_param, immagine_param);
                     
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Episodio inserito con successo';
+			-- SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Episodio inserito con successo';
             
 		END IF;
 END $
