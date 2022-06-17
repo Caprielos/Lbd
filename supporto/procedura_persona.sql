@@ -1,10 +1,10 @@
-DROP PROCEDURE IF EXISTS `inserisci_persona`;
+DROP PROCEDURE IF EXISTS `inserisci_attore`;
 DROP PROCEDURE IF EXISTS `guida_tv`.`validate_actor`;
 
 DELIMITER $
 
 -- > [Procedura per inserire un attore.] < --
-CREATE PROCEDURE `inserisci_persona`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
+CREATE PROCEDURE `inserisci_attore`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
 BEGIN
 		INSERT INTO `guida_tv`.persona(`nome`, `cognome`, `data_di_nascita`) VALUES (nome_param, cognome_param, data_di_nascita_param);
 END $

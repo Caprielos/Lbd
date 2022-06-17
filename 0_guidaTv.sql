@@ -166,7 +166,7 @@ ALTER TABLE `guida_tv`.`programma_preferito`
 ADD CONSTRAINT `id_programma_utente`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
-ON DELETE CASCADE		--
+ON DELETE NO ACTION		--
 ON UPDATE NO ACTION;	--
 
 -- E LA 6
@@ -185,3 +185,10 @@ ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
 
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
+
+ALTER TABLE `guida_tv`.`canale_preferito` 
+ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
+
+ALTER TABLE `guida_tv`.`programma_preferito` 
+ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
+

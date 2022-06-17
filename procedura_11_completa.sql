@@ -4,19 +4,19 @@ DROP PROCEDURE IF EXISTS `guida_tv`.`query_111`;
 DELIMITER $
 
 -- 11 > [Generazione della email giornaliera per un utente in base alle sue preferenze] < --
-CREATE PROCEDURE `guida_tv`.`query_111` (IN email_param VARCHAR(64), OUT result VARCHAR(128))
+CREATE PROCEDURE `guida_tv`.`query_111` (IN email_param VARCHAR(64), OUT result TEXT)
 
 -- NO GESTISCO LA FASCIA ORARIA
 
 BEGIN
 
-	DECLARE canPref VARCHAR(128);
-	DECLARE intro VARCHAR(128);
-    DECLARE prima_parte VARCHAR(128);
+	DECLARE canPref TEXT;
+	DECLARE intro TEXT;
+    DECLARE prima_parte TEXT;
     
-	DECLARE progPref VARCHAR(128);
-	DECLARE meta VARCHAR(128);
-    DECLARE seconda_parte VARCHAR(128);
+	DECLARE progPref TEXT;
+	DECLARE meta TEXT;
+    DECLARE seconda_parte TEXT;
     
     SET intro = "Le ricordiamo che oggi al canale : ";
     SET canPref =
