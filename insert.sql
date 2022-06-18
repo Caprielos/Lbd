@@ -1,3 +1,135 @@
+DROP PROCEDURE IF EXISTS `guida_tv`.`validate_email`;
+
+DELIMITER $
+
+-- > [Procedura per validare l'email.] < --
+CREATE PROCEDURE `validate_email`(
+	IN email_param VARCHAR(64),
+    IN pwd_param VARCHAR(32)
+)
+
+BEGIN
+
+	IF (SELECT email_param NOT REGEXP '^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9._-]@[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]\\.[a-zA-Z]{2,63}$')
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email inserita non corretta';
+	END IF;
+    
+END$
+
+DELIMITER $
+
+
+DROP PROCEDURE IF EXISTS `inserisci_attore`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`validate_actor`;
+
+DELIMITER $
+
+-- > [Procedura per inserire un attore.] < --
+CREATE PROCEDURE `inserisci_attore`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
+BEGIN
+		INSERT INTO `guida_tv`.persona(`nome`, `cognome`, `data_di_nascita`) VALUES (nome_param, cognome_param, data_di_nascita_param);
+END $
+
+-- > [Procedura per controllare l'inserimento di un duplicato di un attore o uno che ha una data sbagliata.] < --
+CREATE PROCEDURE `validate_actor`(
+	IN nome_param VARCHAR(64),
+    IN cognome_param VARCHAR(32),
+    IN data_di_nascita_param DATE
+)
+
+BEGIN
+
+	IF (data_di_nascita_param > curdate() ) 
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Forse hai sbagliato la data di nascita';
+	END IF;
+    
+	IF EXISTS (SELECT * FROM `guida_tv`.persona p WHERE p.nome = nome_param AND p.cognome = cognome_param AND p.data_di_nascita = data_di_nascita_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Attore già esistente';
+	END IF;
+    
+END$
+
+
+DELIMITER $
+
+
+DROP PROCEDURE IF EXISTS `guida_tv`.`genera_palinsesto`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`validate_palinsesto`;
+
+DELIMITER $
+
+-- > [Generazione del palinsesto.] < -- 
+CREATE PROCEDURE `genera_palinsesto`(IN giorno_param DATE, IN ora_inizio_param TIME,  IN ora_fine_param TIME, IN id_canale_param INTEGER, IN id_programma_param INTEGER)
+BEGIN
+		INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`)
+        VALUES (giorno_param, ora_inizio_param, ora_fine_param , id_canale_param, id_programma_param);
+END $
+
+
+-- > [Procedura per controllare se ci sono 2 palinsesti nello stesso momento nello stesso canale.] < --
+-- > [Procedura per controllare se l'orario di fine è valido.] < --
+-- > [Procedura per controllare se creo un palinsesto che ha data maggiore di oggi + 7.] < --
+-- > [Procedura per controllare se creo un palinsesto che ha data minore di oggi.] < --
+CREATE PROCEDURE `validate_palinsesto`(
+	IN giorno_param DATE,
+    IN ora_inizio_param TIME,
+    IN ora_fine_param TIME,
+    IN id_canale_param INTEGER,
+    IN id_programma_param INTEGER
+)
+
+BEGIN
+
+	IF EXISTS (SELECT * FROM `guida_tv`.`palinsesto` p WHERE p.giorno = giorno_param AND p.ora_inizio = ora_inizio_param 
+																				   AND p.ora_fine = ora_fine_param AND p.id_canale = id_canale_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Questo orario è già occupato da un altro programma';
+	END IF;
+	
+    IF (ora_inizio_param + (SELECT prog.durata FROM `guida_tv`.`programma` prog WHERE prog.id = id_canale_param) > ora_fine_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Hai sbagliato a inserire l\'orario di fine';
+	END IF;
+    
+        IF ( (SELECT p.ora_fine FROM `guida_tv`.`palinsesto` p WHERE p.giorno = giorno_param AND p.id_canale = id_canale_param) > ora_inizio_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi inserire questo programma nell\' nello spazio di un altro';
+	END IF;
+    
+	IF (giorno_param > (curdate() + 7) )
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto così in avanti';
+	END IF;
+    
+	IF (giorno_param < curdate() )
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto per giorni precedenti a oggi';
+	END IF;
+    
+    
+END$
+
+
+
+DELIMITER $
+
+
+DROP PROCEDURE IF EXISTS `guida_tv`.`inserisci_canale`;
+
+DELIMITER $
+
+-- > [Inserimento canale.] < -- 
+CREATE PROCEDURE `inserisci_canale`(IN nome_param VARCHAR(64), IN numero_param INTEGER)
+BEGIN
+		INSERT INTO `guida_tv`.canale(`nome`, `numero`) VALUES (nome_param, numero_param);
+END $
+
+DELIMITER $
+
+
 call guida_tv.signUp('diegidiogabriele@gmail.com', '1234');
 call guida_tv.signUp('andreasegnalini@gmail.com', '1234');
 
@@ -21,7 +153,6 @@ call guida_tv.inserisci_episodio('Games of trones : - quinto episodio', '00:45:0
 call guida_tv.inserisci_episodio('Games of trones : - sesto episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 6, 'Produttore 5', 'Muore molta gente', '', '');
 call guida_tv.inserisci_episodio('Games of trones : - settimo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 7, 'Produttore 5', 'Muore molta gente', '', '');
 call guida_tv.inserisci_episodio('Games of trones : - ottavo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 8, 'Produttore 5', 'Muore molta gente', '', '');
-
 
 CALL `guida_tv`.inserisci_film("Rambo 1", '01:15:00', "Rambo contro tutti", '2000-07-17', "Path esterno", "Produttore 1", NULL);
 CALL `guida_tv`.inserisci_film("Rocky", '01:41:00', "Pugilato", '2000-08-17', "Path esterno", "Produttore 1", NULL);
@@ -76,7 +207,6 @@ INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES 
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Elia', 'Palange', '2022-06-01');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Fulvio', 'Zuanni', '2022-06-01');
 
-
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('1', '10');
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('2', '9');
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '6');
@@ -94,4 +224,6 @@ INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_can
 
 INSERT INTO `guida_tv`.`programma_preferito` (`fascia_oraria`, `id_utente`, `id_programma`) VALUES ('3', '1', '2');
 INSERT INTO `guida_tv`.`programma_preferito` (`fascia_oraria`, `id_utente`, `id_programma`) VALUES ('4', '2', '4');
+
+
 

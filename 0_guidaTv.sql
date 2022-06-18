@@ -136,7 +136,7 @@ ALTER TABLE `guida_tv`.`possiede`
 ADD CONSTRAINT `id_genere_programma`
 FOREIGN KEY (`id_genere`)
 REFERENCES `guida_tv`.`genere` (`id`)
-ON DELETE NO ACTION
+ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 ALTER TABLE `guida_tv`.`canale_preferito` 
@@ -150,8 +150,8 @@ ALTER TABLE `guida_tv`.`canale_preferito`
 ADD CONSTRAINT `id_canale_utente`
 FOREIGN KEY (`id_canale`)
 REFERENCES `guida_tv`.`canale` (`id`)
-ON DELETE NO ACTION		--
-ON UPDATE NO ACTION;	--
+ON DELETE CASCADE		--
+ON UPDATE CASCADE;	--
 
 ALTER TABLE `guida_tv`.`programma_preferito` 
 ADD CONSTRAINT `id_utente_programma`
@@ -213,13 +213,6 @@ CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR
 	BEGIN
 		CALL `guida_tv`.`validate_palinsesto`(NEW.giorno, NEW.ora_inizio, NEW.ora_fine, NEW.id_programma, NEW.id_canale);
 END$
-
--- > [Trigger per : una volta cancellato un programma, si cancella anche l'id dalla tabella programma preferito] < --
-CREATE TRIGGER `trigger_programma_preferito` BEFORE DELETE ON `guida_tv`.`programma_preferito` FOR EACH ROW
-	BEGIN
-		
-END$
-
 
 DELIMITER $
 
