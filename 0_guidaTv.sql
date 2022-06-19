@@ -17,6 +17,7 @@ CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(64) NOT NULL,
     `pwd` VARCHAR(32) NOT NULL,
+    `orario_email` ENUM ('Mattina', 'Pomeriggio', 'Sera'),
     PRIMARY KEY(`id`)
 );
 
@@ -89,7 +90,7 @@ CREATE TABLE `canale_preferito` (
 
 CREATE TABLE `programma_preferito` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	`fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte'),
+	-- `fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte'),
     `id_utente` INTEGER UNSIGNED NOT NULL,
     `id_programma` INTEGER UNSIGNED NOT NULL,
 	PRIMARY KEY(`id`)
@@ -180,12 +181,6 @@ ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
 
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
-
-ALTER TABLE `guida_tv`.`canale_preferito` 
-ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
-
-ALTER TABLE `guida_tv`.`programma_preferito` 
-ADD CONSTRAINT id_utente_unique UNIQUE (`id_utente`);
 
 -- TRIGGER
 
