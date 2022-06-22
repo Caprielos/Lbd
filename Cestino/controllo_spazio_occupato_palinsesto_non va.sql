@@ -21,4 +21,15 @@
                     END IF;
             END IF;
 	END IF;
+    
+    
+    DELIMITER $
+
+-- > [Trigger per validare l'inserimento di un palinsesto.] < --
+CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR EACH ROW
+	BEGIN
+		CALL `guida_tv`.`validate_palinsesto`(NEW.giorno, NEW.ora_inizio, NEW.ora_fine, NEW.id_programma, NEW.id_canale);
+END$
+
+DELIMITER $;
 	

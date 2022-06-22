@@ -23,17 +23,6 @@ call guida_tv.inserisci_episodio('Games of trones : - sesto episodio', '00:45:00
 call guida_tv.inserisci_episodio('Games of trones : - settimo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 7, 'Produttore 5', 'Muore molta gente', '', '');
 call guida_tv.inserisci_episodio('Games of trones : - ottavo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 8, 'Produttore 5', 'Muore molta gente', '', '');
 
-call guida_tv.genera_palinsesto('2022-06-22', '00:00:00', '02:00:00', 1, 1);
-call guida_tv.genera_palinsesto('2022-06-22', '02:00:00', '04:00:00', 1, 2);
-call guida_tv.genera_palinsesto('2022-06-22', '04:00:00', '06:00:00', 1, 3);
-call guida_tv.genera_palinsesto('2022-06-22', '06:00:00', '09:30:00', 1, 4);
-
-call guida_tv.genera_palinsesto('2022-06-22', '00:00:00', '02:00:00', 2, 1);
-call guida_tv.genera_palinsesto('2022-06-22', '02:00:00', '04:00:00', 2, 2);
-call guida_tv.genera_palinsesto('2022-06-22', '04:00:00', '06:00:00', 2, 3);
-call guida_tv.genera_palinsesto('2022-06-22', '06:00:00', '0:30:00', 2, 4);
-
-
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Animazione');
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Avventura');
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Biografico');

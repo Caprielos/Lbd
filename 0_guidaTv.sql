@@ -143,8 +143,8 @@ ALTER TABLE `guida_tv`.`canale_preferito`
 ADD CONSTRAINT `id_utente_canale`
 FOREIGN KEY (`id_utente`)
 REFERENCES `guida_tv`.`utente` (`id`)
-ON DELETE NO ACTION		--
-ON UPDATE NO ACTION;	--
+ON DELETE CASCADE	--
+ON UPDATE CASCADE;	--
 
 ALTER TABLE `guida_tv`.`canale_preferito` 
 ADD CONSTRAINT `id_canale_utente`
@@ -157,8 +157,8 @@ ALTER TABLE `guida_tv`.`programma_preferito`
 ADD CONSTRAINT `id_utente_programma`
 FOREIGN KEY (`id_utente`)
 REFERENCES `guida_tv`.`utente` (`id`)
-ON DELETE NO ACTION		--
-ON UPDATE NO ACTION;	--
+ON DELETE CASCADE		--
+ON UPDATE CASCADE;	    --
 
 ALTER TABLE `guida_tv`.`programma_preferito` 
 ADD CONSTRAINT `id_programma_utente`
@@ -181,17 +181,4 @@ ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
 
--- Trigger
-
-DROP TRIGGER IF EXISTS `guida_tv`.`trigger_palinsesto`;
-
-DELIMITER $
-
--- > [Trigger per validare l'inserimento di un palinsesto.] < --
-CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR EACH ROW
-	BEGIN
-		CALL `guida_tv`.`validate_palinsesto`(NEW.giorno, NEW.ora_inizio, NEW.ora_fine, NEW.id_programma, NEW.id_canale);
-END$
-
-DELIMITER $;
 
