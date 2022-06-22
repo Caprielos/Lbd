@@ -90,7 +90,6 @@ CREATE TABLE `canale_preferito` (
 
 CREATE TABLE `programma_preferito` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-	-- `fascia_oraria` ENUM ('Mattina', 'Pomeriggio', 'Sera', 'Notte'),
     `id_utente` INTEGER UNSIGNED NOT NULL,
     `id_programma` INTEGER UNSIGNED NOT NULL,
 	PRIMARY KEY(`id`)
@@ -152,7 +151,7 @@ ADD CONSTRAINT `id_canale_utente`
 FOREIGN KEY (`id_canale`)
 REFERENCES `guida_tv`.`canale` (`id`)
 ON DELETE CASCADE		--
-ON UPDATE CASCADE;	--
+ON UPDATE CASCADE;		--
 
 ALTER TABLE `guida_tv`.`programma_preferito` 
 ADD CONSTRAINT `id_utente_programma`
@@ -166,9 +165,9 @@ ADD CONSTRAINT `id_programma_utente`
 FOREIGN KEY (`id_programma`)
 REFERENCES `guida_tv`.`programma` (`id`)
 ON DELETE CASCADE		--
-ON UPDATE CASCADE;	--
+ON UPDATE CASCADE;	    --
 
--- VINCOLI
+-- Vincoli
 
 ALTER TABLE `guida_tv`.`utente` 
 ADD CONSTRAINT email_utente_unique UNIQUE (`email`);
@@ -182,26 +181,11 @@ ADD CONSTRAINT numero_canale_unique UNIQUE (`numero`);
 ALTER TABLE `guida_tv`.`genere` 
 ADD CONSTRAINT nome_genere_unique UNIQUE (`nome`);
 
--- TRIGGER
+-- Trigger
 
-DROP TRIGGER IF EXISTS `guida_tv`.`trigger_email`;
-DROP TRIGGER IF EXISTS `guida_tv`.`trigger_actor`;
 DROP TRIGGER IF EXISTS `guida_tv`.`trigger_palinsesto`;
-DROP TRIGGER IF EXISTS `guida_tv`.`trigger_programma_preferito`;
 
 DELIMITER $
-
--- > [Trigger per validare l' inserimento di un utente.] < --
-CREATE TRIGGER `trigger_email` BEFORE INSERT ON `guida_tv`.`utente` FOR EACH ROW
-	BEGIN
-		CALL `guida_tv`.`validate_email`(NEW.email, NEW.pwd);
-END$
-
--- > [Trigger per validare l'inserimento di un attore.] < --
-CREATE TRIGGER `trigger_actor` BEFORE INSERT ON `guida_tv`.`persona` FOR EACH ROW
-	BEGIN
-		CALL `guida_tv`.`validate_actor`(NEW.nome, NEW.cognome, NEW.data_di_nascita);
-END$
 
 -- > [Trigger per validare l'inserimento di un palinsesto.] < --
 CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR EACH ROW
@@ -209,5 +193,5 @@ CREATE TRIGGER `trigger_palinsesto` BEFORE INSERT ON `guida_tv`.`palinsesto` FOR
 		CALL `guida_tv`.`validate_palinsesto`(NEW.giorno, NEW.ora_inizio, NEW.ora_fine, NEW.id_programma, NEW.id_canale);
 END$
 
-DELIMITER $
+DELIMITER $;
 

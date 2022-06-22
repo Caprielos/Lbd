@@ -7,8 +7,6 @@ CREATE PROCEDURE `guida_tv`.`query_10` ( IN nome_canale_param VARCHAR(64), IN gi
 
 BEGIN
 	   
-	-- SELECT DISTINCT SUM(durata)
-    -- SELECT SEC_TO_TIME(durata / 100)
 	SELECT  SEC_TO_TIME( SUM( TIME_TO_SEC( `durata` ) ) ) 
     FROM `guida_tv`.palinsesto pal 
 	JOIN `guida_tv`.canale can ON pal.id_canale = ( SELECT c.id FROM canale c WHERE c.nome = nome_canale_param )

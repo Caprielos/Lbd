@@ -7,11 +7,8 @@ CREATE PROCEDURE `guida_tv`.`query_9` ( IN giorno_param DATE )
 
 BEGIN
 	
-    -- COUNT(*)
-    
 	SELECT DISTINCT can.nome, COUNT(*)
 	FROM `guida_tv`.palinsesto pal 
-    
 	JOIN `guida_tv`.canale can ON pal.id_canale = can.id
 	JOIN `guida_tv`.possiede pos ON pos.id_programma = pal.id_programma 
 	JOIN `guida_tv`.genere gen ON pos.id_genere = gen.id

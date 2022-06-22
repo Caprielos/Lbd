@@ -66,9 +66,6 @@ BEGIN
 			SET r2 = concat(invece,progPref);
             SET sara = " sarà in onda al canale : ";
             
-            
-                        
-            
             SET result =concat(r1,r2);
             
 		ELSE
