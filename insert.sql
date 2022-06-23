@@ -1,4 +1,3 @@
-
 call guida_tv.signUp('diegidiogabriele@gmail.com', '1234','Mattina');
 call guida_tv.signUp('andreasegnalini@gmail.com', '1234', 'Sera');
 
