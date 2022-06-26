@@ -7,8 +7,10 @@ DELIMITER $
 CREATE PROCEDURE `guida_tv`.`canali_preferiti` ()
 
 BEGIN
-	
-    SELECT * FROM  `guida_tv`.canale_preferito JOIN utente u ON u.id = canale_preferito.id_utente;  
+ 
+	SELECT id_canale, COUNT(id_canale) FROM `guida_tv`.`canale_preferito` 
+	GROUP BY id_canale
+	HAVING COUNT(id_canale) > 1;
     
 END $
 
@@ -17,12 +19,15 @@ CREATE PROCEDURE `guida_tv`.`programmi_preferiti` ()
 
 BEGIN
 	
-    SELECT * FROM  `guida_tv`.programma_preferito JOIN utente u ON u.id = programma_preferito.id_utente;
+    SELECT id_programma, COUNT(id_programma) FROM `guida_tv`.`programma_preferito` 
+	GROUP BY id_programma
+	HAVING COUNT(id_programma) > 1;
     
 END $
 
 
 DELIMITER $
-CALL programmi_preferiti
+CALL programmi_preferiti;
+CALL canali_preferiti;
 
 
