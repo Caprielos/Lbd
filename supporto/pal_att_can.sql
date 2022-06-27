@@ -74,3 +74,14 @@ BEGIN
 END $
 
 DELIMITER $
+
+call guida_tv.inserisci_canale('Rai 1', 1);
+call guida_tv.inserisci_canale('Rai 2', 2);
+call guida_tv.inserisci_canale('Rai 3', 3);
+call guida_tv.inserisci_canale('Canale 4', 4);
+call guida_tv.inserisci_canale('Canale 5', 5);
+call guida_tv.inserisci_canale('Italia 1', 6);
+
+call guida_tv.genera_palinsesto('2022-06-27','19:30:00','21:15:00',1,1);
+call guida_tv.genera_palinsesto('2022-06-27','21:16:00','22:01:00',1,5);
+call guida_tv.genera_palinsesto('2022-06-28','21:16:00','22:01:00',1,6);
