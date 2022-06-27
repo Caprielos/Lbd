@@ -27,5 +27,21 @@ BEGIN
 END $
 
 DELIMITER $
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Animazione');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Avventura');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Biografico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Comico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Commedia');
 
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Drammatico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantascienza');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantasy');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Giallo');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Guerra');
+
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Horror');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Spionaggio');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Storico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Western');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Erotico');
 CALL `query_7` ("Guerra");
