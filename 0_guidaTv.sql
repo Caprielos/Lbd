@@ -17,7 +17,6 @@ CREATE TABLE `utente` (
 	`id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(64) NOT NULL,
     `pwd` VARCHAR(32) NOT NULL,
-    `orario_email` ENUM ('Mattina', 'Pomeriggio', 'Sera'),
     PRIMARY KEY(`id`)
 );
 

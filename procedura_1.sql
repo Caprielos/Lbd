@@ -3,17 +3,17 @@ DROP PROCEDURE IF EXISTS `guida_tv`.`signUp`;
 DELIMITER $
 
 -- 1 > [Registrazione (inserimento dei dati del profilo) di un utente.] < --
-CREATE PROCEDURE `signUp`(IN email_param VARCHAR(64), IN pwd_param VARCHAR(32), IN fascia_email_param ENUM ('Nessuno','Mattina', 'Pomeriggio', 'Sera'))
+CREATE PROCEDURE `signUp`(IN email_param VARCHAR(64), IN pwd_param VARCHAR(32))
 BEGIN
 		IF (SELECT email_param NOT REGEXP '[a-zA-Z0-9._-].*@[a-zA-Z0-9._-].*\\.[a-zA-Z0-9].')
 			THEN
 				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email inserita non corretta';
 			ELSE
-				INSERT INTO `guida_tv`.utente(`email`, `pwd`, `orario_email`) VALUES (email_param, pwd_param, fascia_email_param);
+				INSERT INTO `guida_tv`.utente(`email`, `pwd`) VALUES (email_param, pwd_param);
 		END IF;
 END $
 
 DELIMITER $
 
-call guida_tv.signUp('diegidiogabriele@gmail.com', '1234','Mattina');
-call guida_tv.signUp('andreasegnalini@gmail.com', '1234', 'Sera');
+call guida_tv.signUp('diegidiogabriele@gmail.com', '1234');
+call guida_tv.signUp('andreasegnalini@gmail.com', '1234');
