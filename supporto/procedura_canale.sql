@@ -10,10 +10,5 @@ END $
 
 
 
-call guida_tv.inserisci_canale('Rai 1', 1);
-call guida_tv.inserisci_canale('Rai 2', 2);
-call guida_tv.inserisci_canale('Rai 3', 3);
-call guida_tv.inserisci_canale('Canale 4', 4);
-call guida_tv.inserisci_canale('Canale 5', 5);
-call guida_tv.inserisci_canale('Italia 1', 6);
+
 

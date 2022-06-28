@@ -1,3 +1,45 @@
+call guida_tv.signUp('diegidiogabriele@gmail.com', '1234');
+call guida_tv.signUp('andreasegnalini@gmail.com', '1234');
+
+call guida_tv.inserisci_film('Rambo 1', '01:15:00', 'classico film di guerra', '2000-08-17', '', 'Produttore 1', '');
+call guida_tv.inserisci_film('Rocky', '01:45:00', 'box', '2000-09-17', '', 'Produttore 2', '');
+call guida_tv.inserisci_film('Aladino', '02:00:00', 'siamo nella sabbia', '2003-08-18', '', 'Produttore 3', '');
+call guida_tv.inserisci_film('Io sono leggenda', '03:15:00', 'uno contro tutti', '2010-04-27', '', 'Produttore 4', '');
+call guida_tv.inserisci_film('Pirati dei caraibi: La maledizione della prima luna ', '02:00:00', 'pirati contro tutti', '2000-03-21', '', 'Produttore 5', '');
+call guida_tv.inserisci_film('Pirati dei caraibi: La maledizione del forziere', '02:15:00', 'pirati uno contro tutti', '2005-01-02', '', 'Produttore 5', '');
+call guida_tv.inserisci_film('Pirati dei caraibi: Ai confini del mondo', '02:45:00', 'pirati uno contro tutti', '2008-06-15', '', 'Produttore 5', '');
+
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 1, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 2, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 3, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 4, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 5, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 6, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 7, 'Produttore 5', 'Muore molta gente', '', '');
+call guida_tv.inserisci_episodio('Games of trones', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 8, 'Produttore 5', 'Muore molta gente', '', '');
+
+call guida_tv.inserisci_canale('Rai 1', 1);
+call guida_tv.inserisci_canale('Rai 2', 2);
+call guida_tv.inserisci_canale('Rai 3', 3);
+call guida_tv.inserisci_canale('Canale 4', 4);
+call guida_tv.inserisci_canale('Canale 5', 5);
+call guida_tv.inserisci_canale('Italia 1', 6);
+
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Animazione');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Avventura');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Biografico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Comico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Commedia');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Drammatico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantascienza');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantasy');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Giallo');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Guerra');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Horror');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Spionaggio');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Storico');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Western');
+INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Erotico');
 
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`, `data_di_nascita`) VALUES ('Giuseppe', 'Della Penna', '2022-06-01');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Stefano', 'Fattore', '2022-06-01');

@@ -37,6 +37,3 @@ END $
 
 DELIMITER $
 
-call guida_tv.genera_palinsesto('2022-06-28','00:00:00','02:00:00',2,1);
-call guida_tv.genera_palinsesto('2022-06-28','02:00:00','04:00:00',2,5);
-call guida_tv.genera_palinsesto('2022-06-28','04:00:00','06:00:00',2,6);

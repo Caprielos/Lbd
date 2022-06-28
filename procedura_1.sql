@@ -15,5 +15,3 @@ END $
 
 DELIMITER $
 
-call guida_tv.signUp('diegidiogabriele@gmail.com', '1234');
-call guida_tv.signUp('andreasegnalini@gmail.com', '1234');
