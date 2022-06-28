@@ -1,5 +1,7 @@
 call guida_tv.signUp('diegidiogabriele@gmail.com', '1234');
 call guida_tv.signUp('andreasegnalini@gmail.com', '1234');
+call guida_tv.signUp('prova1@gmail.com', '1234');
+call guida_tv.signUp('prova2@gmail.com', '1234');
 
 call guida_tv.inserisci_film('Rambo 1', '01:15:00', 'classico film di guerra', '2000-08-17', '', 'Produttore 1', '');
 call guida_tv.inserisci_film('Rocky', '01:45:00', 'box', '2000-09-17', '', 'Produttore 2', '');
@@ -65,22 +67,50 @@ INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES 
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Fulvio', 'Zuanni', '2022-06-01');
 
 INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('1', '10');
-INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('2', '9');
-INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '6');
-INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '9');
-INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('4', '6');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('2', '1');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '1');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('3', '2');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('4', '2');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('5', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('6', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('7', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('8', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('9', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('10', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('11', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('12', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('13', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('14', '10');
+INSERT INTO `guida_tv`.`possiede` (`id_programma`, `id_genere`) VALUES ('15', '10');
 
-INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('1', '10', 'aa');
-INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('2', '9', 'bb');
-INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('3', '8', 'cc');
-INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('4', '7', 'dd');
-INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('5', '6', 'dd');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('1', '10', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('2', '9', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('3', '8', 'regista');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('4', '7', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('5', '6', 'regista');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('6', '10', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('7', '9', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('8', '8', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('9', '7', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('10', '6', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('11', '1', 'regista');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('12', '2', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('13', '3', 'regista');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('14', '4', 'attore');
+INSERT INTO `guida_tv`.`partecipa` (`id_programma`, `id_persona`, `ruolo`) VALUES ('15', '5', 'regista');
 
 INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Mattina', 1, 1);
 INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Pomeriggio', 2, 2);
+INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Sera', 3, 3);
+INSERT INTO `guida_tv`.`canale_preferito` (`fascia_oraria`, `id_utente`, `id_canale`) VALUES ('Pomeriggio', 4, 2);
 
 INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('1', '2');
 INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('2', '4');
-
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('3', '5');
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('4', '6');
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('1', '1');
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('2', '7');
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('3', '8');
+INSERT INTO `guida_tv`.`programma_preferito` (`id_utente`, `id_programma`) VALUES ('4', '1');
 
 
