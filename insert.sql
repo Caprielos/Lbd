@@ -1,26 +1,3 @@
-call guida_tv.signUp('diegidiogabriele@gmail.com', '1234','Mattina');
-call guida_tv.signUp('andreasegnalini@gmail.com', '1234', 'Sera');
-
-call guida_tv.inserisci_canale('Rai 1', 1);
-call guida_tv.inserisci_canale('Rai 2', 2);
-call guida_tv.inserisci_canale('Rai 3', 3);
-call guida_tv.inserisci_canale('Canale 4', 4);
-call guida_tv.inserisci_canale('Canale 5', 5);
-call guida_tv.inserisci_canale('Italia 1', 6);
-
-call guida_tv.inserisci_film('Rambo 1', '01:15:00', 'classico film di guerra', '2000-08-17', '', 'Produttore 1', '');
-call guida_tv.inserisci_film('Rocky', '01:45:00', 'box', '2000-09-17', '', 'Produttore 2', '');
-call guida_tv.inserisci_film('Aladino', '02:00:00', 'siamo nella sabbia', '2003-08-18', '', 'Produttore 3', '');
-call guida_tv.inserisci_film('Io sono leggenda', '03:15:00', 'uno contro tutti', '2010-04-27', '', 'Produttore 4', '');
-
-call guida_tv.inserisci_episodio('Games of trones : - primo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 1, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - secondo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 2, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - terzo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 3, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - quarto episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 4, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - quinto episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 5, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - sesto episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 6, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - settimo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 7, 'Produttore 5', 'Muore molta gente', '', '');
-call guida_tv.inserisci_episodio('Games of trones : - ottavo episodio', '00:45:00', 'serie sui ghiacci', '2017-02-01', 1, 8, 'Produttore 5', 'Muore molta gente', '', '');
 
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Animazione');
 INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Avventura');

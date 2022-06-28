@@ -42,7 +42,8 @@ BEGIN
 		JOIN palinsesto pal ON prog.id = pal.id_programma
 		JOIN canale_preferito can_pref ON pal.id_canale = can_pref.id_canale
 		LEFT JOIN canale can ON pal.id_canale = can.id
-		WHERE pal.ora_inizio >= ora_inizio AND pal.ora_fine <= ora_fine AND can_pref.id_utente = id_param AND prog_pref.id_utente = id_param
+		WHERE pal.ora_inizio >= ora_inizio AND pal.ora_fine <= ora_fine AND can_pref.id_utente = id_param AND prog_pref.id_utente = id_param 
+        -- AND pal.giorno = curdate()
         ORDER BY pal.ora_inizio ASC;
         
 		SET email_result = "Le ricordiamo che oggi al canale: ";

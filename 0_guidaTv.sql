@@ -101,8 +101,8 @@ ALTER TABLE `guida_tv`.`palinsesto`
 ADD CONSTRAINT `id_canale_programma`
 FOREIGN KEY (`id_canale`)
 REFERENCES `guida_tv`.`canale` (`id`)
-ON DELETE NO ACTION 	--
-ON UPDATE NO ACTION; 	--
+ON DELETE CASCADE 	--
+ON UPDATE CASCADE; 	--
 
 ALTER TABLE `guida_tv`.`palinsesto` 
 ADD CONSTRAINT `id_programma_canale`
