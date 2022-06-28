@@ -23,5 +23,3 @@ BEGIN
 END $
 
 DELIMITER $
-
-CALL `query_3` ("Rai 1");

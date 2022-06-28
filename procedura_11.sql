@@ -76,6 +76,3 @@ BEGIN
 END $
 
 DELIMITER $
-
-CALL `query_11` (1 ,"diegidiogabriele@gmail.com", @email_result);
-SELECT @email_result;

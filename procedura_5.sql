@@ -27,7 +27,6 @@ END $
 
 
 DELIMITER $
-CALL programmi_preferiti;
 
 
 

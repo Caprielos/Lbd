@@ -29,5 +29,4 @@ END $
 
 DELIMITER $
 
-CALL `query_8` ('Mauro', 'Zannetti','')
 

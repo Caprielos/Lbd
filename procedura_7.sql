@@ -27,5 +27,3 @@ BEGIN
 END $
 
 DELIMITER $
-
-CALL `query_7` ("Guerra");

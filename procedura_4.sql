@@ -16,5 +16,3 @@ BEGIN
 END $
 
 DELIMITER $
-
-CALL `query_4` ("Games of trones");

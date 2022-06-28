@@ -43,4 +43,3 @@ END $
 
 
 DELIMITER $
-call `guida_tv`.`query_6`('Games of trones', '2017-02-01', 'Produttore 5','1', '8')

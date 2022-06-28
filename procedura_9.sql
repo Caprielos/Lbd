@@ -20,5 +20,3 @@ END $
 
 DELIMITER $
 
-CALL `query_9` ('2022-06-28');
-
