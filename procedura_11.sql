@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS new_tbl;
-DROP PROCEDURE IF EXISTS `guida_tv`.`query_111`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_11`;
 
 DELIMITER $
 
 -- 11 > [Generazione della email giornaliera per un utente in base alle sue preferenze] < --
-CREATE PROCEDURE `guida_tv`.`query_111` (IN id_param INTEGER UNSIGNED, IN email_param VARCHAR(64), OUT email_result TEXT)
+CREATE PROCEDURE `guida_tv`.`query_11` (IN id_param INTEGER UNSIGNED, IN email_param VARCHAR(64), OUT email_result TEXT)
 
 BEGIN
 
@@ -77,5 +77,5 @@ END $
 
 DELIMITER $
 
-CALL `query_111` (1 ,"diegidiogabriele@gmail.com", @email_result);
+CALL `query_11` (1 ,"diegidiogabriele@gmail.com", @email_result);
 SELECT @email_result;
