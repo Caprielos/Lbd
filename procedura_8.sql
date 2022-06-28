@@ -29,5 +29,5 @@ END $
 
 DELIMITER $
 
-CALL `query_8` ("Amleto", "Di Salle", "Signore Degli Anelli");
+CALL `query_8` ('Mauro', 'Zannetti','')
 

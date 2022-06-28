@@ -1,22 +1,4 @@
 
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Animazione');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Avventura');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Biografico');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Comico');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Commedia');
-
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Drammatico');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantascienza');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Fantasy');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Giallo');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Guerra');
-
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Horror');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Spionaggio');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Storico');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Western');
-INSERT INTO `guida_tv`.`genere` (`nome`) VALUES ('Erotico');
-
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`, `data_di_nascita`) VALUES ('Giuseppe', 'Della Penna', '2022-06-01');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Stefano', 'Fattore', '2022-06-01');
 INSERT INTO `guida_tv`.`persona` (`nome`, `cognome`,  `data_di_nascita`) VALUES ('Tommaso', 'De Luca', '2022-06-01');

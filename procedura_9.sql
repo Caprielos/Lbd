@@ -20,5 +20,5 @@ END $
 
 DELIMITER $
 
-CALL `query_9` ('2022-06-16');
+CALL `query_9` ('2022-06-28');
 

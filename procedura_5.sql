@@ -8,7 +8,7 @@ CREATE PROCEDURE `guida_tv`.`canali_preferiti` ()
 
 BEGIN
  
-	SELECT id_canale, COUNT(id_canale) FROM `guida_tv`.`canale_preferito` 
+	SELECT id_canale, COUNT(id_canale) FROM `guida_tv`.`canale_preferito`
 	GROUP BY id_canale
 	HAVING COUNT(id_canale) > 1;
     
@@ -28,6 +28,6 @@ END $
 
 DELIMITER $
 CALL programmi_preferiti;
-CALL canali_preferiti;
+
 
 
