@@ -11,7 +11,7 @@ BEGIN
     SET durata_programma = (SELECT prog.durata FROM `guida_tv`.`programma` prog WHERE prog.id = id_programma_param);
 	SET ultimate_ora_fine = (SELECT p.ora_fine FROM `guida_tv`.`palinsesto` p WHERE p.id_canale = id_canale_param AND p.giorno = giorno_param ORDER BY p.ora_fine DESC LIMIT 1);
        
-	IF (giorno_param > (curdate() + 7))
+	IF (giorno_param > date_add(curdate(), INTERVAL 7 DAY))
 		THEN
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto così in avanti';    
 	ELSEIF (giorno_param < curdate() )
