@@ -120,7 +120,7 @@ CREATE TABLE `palinsesto` (
   KEY `id_programma_canale` (`id_programma`),
   CONSTRAINT `id_canale_programma` FOREIGN KEY (`id_canale`) REFERENCES `canale` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `id_programma_canale` FOREIGN KEY (`id_programma`) REFERENCES `programma` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,6 +129,7 @@ CREATE TABLE `palinsesto` (
 
 LOCK TABLES `palinsesto` WRITE;
 /*!40000 ALTER TABLE `palinsesto` DISABLE KEYS */;
+INSERT INTO `palinsesto` VALUES (1,'2022-07-01','00:00:00','02:00:00',1,1),(2,'2022-07-01','02:00:00','04:00:00',1,2),(3,'2022-07-01','04:00:00','06:00:00',1,3),(4,'2022-07-01','06:00:00','09:16:00',1,4),(5,'2022-07-01','09:30:00','11:40:00',1,5),(10,'2022-07-01','00:00:00','02:00:00',2,1),(11,'2022-07-01','02:00:00','04:00:00',2,2),(12,'2022-07-01','04:00:00','06:00:00',2,3),(13,'2022-07-01','06:00:00','09:16:00',2,4),(14,'2022-07-01','09:30:00','11:40:00',2,5);
 /*!40000 ALTER TABLE `palinsesto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +388,7 @@ BEGIN
     SET durata_programma = (SELECT prog.durata FROM `guida_tv`.`programma` prog WHERE prog.id = id_programma_param);
 	SET ultimate_ora_fine = (SELECT p.ora_fine FROM `guida_tv`.`palinsesto` p WHERE p.id_canale = id_canale_param AND p.giorno = giorno_param ORDER BY p.ora_fine DESC LIMIT 1);
        
-	IF (giorno_param > (curdate() + 7))
+	IF (giorno_param > date_add(curdate(), INTERVAL 7 DAY))
 		THEN
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto così in avanti';    
 	ELSEIF (giorno_param < curdate() )
@@ -906,4 +907,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-29  1:57:20
+-- Dump completed on 2022-06-29  2:29:37
