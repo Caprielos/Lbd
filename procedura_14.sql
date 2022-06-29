@@ -1,9 +1,9 @@
-DROP PROCEDURE IF EXISTS `guida_tv`.`genera_palinsesto`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_14`;
 
 DELIMITER $
 
 -- > [Generazione del palinsesto.] < -- 
-CREATE PROCEDURE `genera_palinsesto`(IN giorno_param DATE, IN ora_inizio_param TIME,  IN ora_fine_param TIME, IN id_canale_param INTEGER, IN id_programma_param INTEGER)
+CREATE PROCEDURE `query_14`(IN giorno_param DATE, IN ora_inizio_param TIME,  IN ora_fine_param TIME, IN id_canale_param INTEGER, IN id_programma_param INTEGER)
 BEGIN
 
 	DECLARE durata_programma TIME;

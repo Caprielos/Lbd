@@ -1,10 +1,10 @@
-DROP PROCEDURE IF EXISTS `guida_tv`.`canali_preferiti`;
-DROP PROCEDURE IF EXISTS `guida_tv`.`programmi_preferiti`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_5A`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_5B`;
 
 DELIMITER $
 
 -- 5A > [Lista dei canali maggiormente “preferiti” dagli utenti.] < --
-CREATE PROCEDURE `guida_tv`.`canali_preferiti` ()
+CREATE PROCEDURE `guida_tv`.`query_5A` ()
 
 BEGIN
  
@@ -15,7 +15,7 @@ BEGIN
 END $
 
 -- 5B > [Lista dei programmi maggiormente “preferiti” dagli utenti.] < --
-CREATE PROCEDURE `guida_tv`.`programmi_preferiti` ()
+CREATE PROCEDURE `guida_tv`.`query_5B` ()
 
 BEGIN
 	

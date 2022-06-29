@@ -1,10 +1,10 @@
-DROP PROCEDURE IF EXISTS `guida_tv`.`inserisci_film`;
-DROP PROCEDURE IF EXISTS `guida_tv`.`inserisci_episodio`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_2A`;
+DROP PROCEDURE IF EXISTS `guida_tv`.`query_2B`;
 
 DELIMITER $
 
 -- 2A > [Inserimento di un film.] < --
-CREATE PROCEDURE `guida_tv`.`inserisci_film` (IN titolo_param VARCHAR(64),
+CREATE PROCEDURE `guida_tv`.`query_2A` (IN titolo_param VARCHAR(64),
 											  IN durata_param TIME,
 											  IN descrizione_param VARCHAR(128),
 											  IN anno_uscita_param DATE,
@@ -24,7 +24,7 @@ END $
 
 
 -- 2B > [Inserimento di un episodio di una serie.] < --
-CREATE PROCEDURE `inserisci_episodio` (IN titolo_param VARCHAR(64),
+CREATE PROCEDURE `query_2B` (IN titolo_param VARCHAR(64),
 									   IN durata_param TIME,
 									   IN descrizione_param VARCHAR(128),
 									   IN anno_uscita_param DATE,

@@ -1,9 +1,10 @@
 DROP PROCEDURE IF EXISTS `inserisci_attore`;
+DROP PROCEDURE IF EXISTS `query_12`;
 
 DELIMITER $
 
 -- > [Procedura per inserire un attore.] < --
-CREATE PROCEDURE `inserisci_attore`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
+CREATE PROCEDURE `query_12`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
 BEGIN
 		IF (data_di_nascita_param > curdate()) 
 			THEN

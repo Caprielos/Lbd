@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS `guida_tv`.`query_11`;
 DELIMITER $
 
 -- 11 > [Generazione della email giornaliera per un utente in base alle sue preferenze] < --
-CREATE PROCEDURE `guida_tv`.`query_11` (IN id_param INTEGER UNSIGNED, IN email_param VARCHAR(64), OUT email_result TEXT)
+CREATE PROCEDURE `guida_tv`.`query_11` (IN id_param INTEGER UNSIGNED, OUT email_result TEXT)
 
 BEGIN
 

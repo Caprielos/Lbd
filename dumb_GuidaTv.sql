@@ -33,7 +33,7 @@ CREATE TABLE `canale` (
   UNIQUE KEY `numero` (`numero`),
   UNIQUE KEY `nome_canale_unique` (`nome`),
   UNIQUE KEY `numero_canale_unique` (`numero`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `canale` (
 
 LOCK TABLES `canale` WRITE;
 /*!40000 ALTER TABLE `canale` DISABLE KEYS */;
-INSERT INTO `canale` VALUES (1,'Rai 1',1),(2,'Rai 2',2),(3,'Rai 3',3),(4,'Canale 4',4),(5,'Canale 5',5),(6,'Italia 1',6);
+INSERT INTO `canale` VALUES (1,'Rai 1',1),(2,'Rai 2',2),(3,'Rai 3',3),(4,'Canale 4',4),(5,'Canale 5',5),(6,'Italia 1',6),(7,'La7',7);
 /*!40000 ALTER TABLE `canale` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `canale_preferito` (
 
 LOCK TABLES `canale_preferito` WRITE;
 /*!40000 ALTER TABLE `canale_preferito` DISABLE KEYS */;
-INSERT INTO `canale_preferito` VALUES (1,'Mattina',1,1),(2,'Pomeriggio',2,2),(3,'Sera',3,3),(4,'Pomeriggio',4,2);
+INSERT INTO `canale_preferito` VALUES (1,'Notte',1,1),(2,'Pomeriggio',2,2),(3,'Sera',3,3),(4,'Pomeriggio',4,2);
 /*!40000 ALTER TABLE `canale_preferito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `palinsesto` (
   KEY `id_programma_canale` (`id_programma`),
   CONSTRAINT `id_canale_programma` FOREIGN KEY (`id_canale`) REFERENCES `canale` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `id_programma_canale` FOREIGN KEY (`id_programma`) REFERENCES `programma` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `palinsesto` (
 
 LOCK TABLES `palinsesto` WRITE;
 /*!40000 ALTER TABLE `palinsesto` DISABLE KEYS */;
-INSERT INTO `palinsesto` VALUES (1,'2022-07-01','00:00:00','02:00:00',1,1),(2,'2022-07-01','02:00:00','04:00:00',1,2),(3,'2022-07-01','04:00:00','06:00:00',1,3),(4,'2022-07-01','06:00:00','09:16:00',1,4),(5,'2022-07-01','09:30:00','11:40:00',1,5),(10,'2022-07-01','00:00:00','02:00:00',2,1),(11,'2022-07-01','02:00:00','04:00:00',2,2),(12,'2022-07-01','04:00:00','06:00:00',2,3),(13,'2022-07-01','06:00:00','09:16:00',2,4),(14,'2022-07-01','09:30:00','11:40:00',2,5);
+INSERT INTO `palinsesto` VALUES (1,'2022-07-01','00:00:00','02:00:00',1,1),(2,'2022-07-01','02:00:00','04:00:00',1,2),(3,'2022-07-01','04:00:00','06:00:00',1,3),(4,'2022-07-01','06:00:00','09:16:00',1,4),(5,'2022-07-01','09:30:00','11:40:00',1,5),(10,'2022-07-01','00:00:00','02:00:00',2,1),(11,'2022-07-01','02:00:00','04:00:00',2,2),(12,'2022-07-01','04:00:00','06:00:00',2,3),(13,'2022-07-01','06:00:00','09:16:00',2,4),(14,'2022-07-01','09:30:00','11:40:00',2,8),(15,'2022-06-29','00:00:00','02:00:00',1,9),(16,'2022-06-29','02:00:00','04:00:00',1,1),(17,'2022-06-29','04:00:00','06:00:00',1,2),(19,'2022-06-29','11:00:00','13:30:00',1,5),(20,'2022-06-29','14:00:00','18:00:00',1,3),(21,'2022-07-02','13:00:00','14:00:00',7,9);
 /*!40000 ALTER TABLE `palinsesto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,7 @@ CREATE TABLE `partecipa` (
 
 LOCK TABLES `partecipa` WRITE;
 /*!40000 ALTER TABLE `partecipa` DISABLE KEYS */;
-INSERT INTO `partecipa` VALUES (1,10,'attore'),(2,9,'attore'),(3,8,'regista'),(4,7,'attore'),(5,6,'regista'),(6,10,'attore'),(7,9,'attore'),(8,8,'attore'),(9,7,'attore'),(10,6,'attore'),(11,1,'regista'),(12,2,'attore'),(13,3,'regista'),(14,4,'attore'),(15,5,'regista');
+INSERT INTO `partecipa` VALUES (1,10,'attore'),(2,9,'attore'),(3,8,'regista'),(4,7,'attore'),(5,6,'regista'),(6,10,'attore'),(7,9,'attore'),(8,8,'attore'),(9,7,'attore'),(10,6,'attore'),(11,1,'regista'),(12,2,'attore'),(13,3,'regista'),(14,4,'attore');
 /*!40000 ALTER TABLE `partecipa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `persona` (
   `cognome` varchar(64) NOT NULL,
   `data_di_nascita` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'Giuseppe','Della Penna','2022-06-01'),(2,'Stefano','Fattore','2022-06-01'),(3,'Tommaso','De Luca','2022-06-01'),(4,'Marco','Terracina','2022-06-01'),(5,'Marco','Main','2022-06-01'),(6,'Massimo','Tivoli','2022-06-01'),(7,'Pierluigi','Zobel','2022-06-01'),(8,'Federica','Cucchiella','2022-06-01'),(9,'Paolo','De Fabritiis','2022-06-01'),(10,'Mauro','Zannetti','2022-06-01'),(11,'Poalo','Di Stefano','2022-06-01'),(12,'Roberto','Carapellucci','2022-06-01'),(13,'Mario','Pelino','2022-06-01'),(14,'Amleto','Di Salle','2022-06-01'),(15,'Elisabetta','Santi','2022-06-01'),(16,'Antonio','Ometto','2022-06-01'),(17,'Gabriele','Curci','2022-06-01'),(18,'Elia','Palange','2022-06-01'),(19,'Fulvio','Zuanni','2022-06-01');
+INSERT INTO `persona` VALUES (1,'Giuseppe','Della Penna','2022-06-01'),(2,'Stefano','Fattore','2022-06-01'),(3,'Tommaso','De Luca','2022-06-01'),(4,'Marco','Terracina','2022-06-01'),(5,'Marco','Main','2022-06-01'),(6,'Massimo','Tivoli','2022-06-01'),(7,'Pierluigi','Zobel','2022-06-01'),(8,'Federica','Cucchiella','2022-06-01'),(9,'Paolo','De Fabritiis','2022-06-01'),(10,'Mauro','Zannetti','2022-06-01'),(11,'Poalo','Di Stefano','2022-06-01'),(12,'Roberto','Carapellucci','2022-06-01'),(13,'Mario','Pelino','2022-06-01'),(14,'Amleto','Di Salle','2022-06-01'),(15,'Elisabetta','Santi','2022-06-01'),(16,'Antonio','Ometto','2022-06-01'),(17,'Gabriele','Curci','2022-06-01'),(18,'Elia','Palange','2022-06-01'),(19,'Fulvio','Zuanni','2022-06-01'),(20,'Sabatino','Di Egidio','1950-10-27');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +210,7 @@ CREATE TABLE `possiede` (
 
 LOCK TABLES `possiede` WRITE;
 /*!40000 ALTER TABLE `possiede` DISABLE KEYS */;
-INSERT INTO `possiede` VALUES (2,1),(3,1),(3,2),(4,2),(1,10),(5,10),(6,10),(7,10),(8,10),(9,10),(10,10),(11,10),(12,10),(13,10),(14,10),(15,10);
+INSERT INTO `possiede` VALUES (2,1),(3,1),(3,2),(4,2),(1,10),(5,10),(6,10),(7,10),(8,10),(9,10),(10,10),(11,10),(12,10),(13,10),(14,10);
 /*!40000 ALTER TABLE `possiede` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +243,7 @@ CREATE TABLE `programma` (
 
 LOCK TABLES `programma` WRITE;
 /*!40000 ALTER TABLE `programma` DISABLE KEYS */;
-INSERT INTO `programma` VALUES (1,'Rambo 1','01:15:00','classico film di guerra','2000-08-17',NULL,NULL,'Produttore 1',NULL,'',''),(2,'Rocky','01:45:00','box','2000-09-17',NULL,NULL,'Produttore 2',NULL,'',''),(3,'Aladino','02:00:00','siamo nella sabbia','2003-08-18',NULL,NULL,'Produttore 3',NULL,'',''),(4,'Io sono leggenda','03:15:00','uno contro tutti','2010-04-27',NULL,NULL,'Produttore 4',NULL,'',''),(5,'Pirati dei caraibi: La maledizione della prima luna ','02:00:00','pirati contro tutti','2000-03-21',NULL,NULL,'Produttore 5',NULL,'',''),(6,'Pirati dei caraibi: La maledizione del forziere','02:15:00','pirati uno contro tutti','2005-01-02',NULL,NULL,'Produttore 5',NULL,'',''),(7,'Pirati dei caraibi: Ai confini del mondo','02:45:00','pirati uno contro tutti','2008-06-15',NULL,NULL,'Produttore 5',NULL,'',''),(8,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,1,'Produttore 5',NULL,'',''),(9,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,2,'Produttore 5',NULL,'',''),(10,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,3,'Produttore 5',NULL,'',''),(11,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,4,'Produttore 5',NULL,'',''),(12,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,5,'Produttore 5',NULL,'',''),(13,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,6,'Produttore 5',NULL,'',''),(14,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,7,'Produttore 5',NULL,'',''),(15,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,8,'Produttore 5',NULL,'','');
+INSERT INTO `programma` VALUES (1,'Rambo 1','01:15:00','classico film di guerra','2000-08-17',NULL,NULL,'Produttore 1',NULL,'',''),(2,'Rocky','01:45:00','box','2000-09-17',NULL,NULL,'Produttore 2',NULL,'',''),(3,'Aladino','02:00:00','siamo nella sabbia','2003-08-18',NULL,NULL,'Produttore 3',NULL,'',''),(4,'Io sono leggenda','03:15:00','uno contro tutti','2010-04-27',NULL,NULL,'Produttore 4',NULL,'',''),(5,'Pirati dei caraibi: La maledizione della prima luna ','02:00:00','pirati contro tutti','2000-03-21',NULL,NULL,'Produttore 5',NULL,'',''),(6,'Pirati dei caraibi: La maledizione del forziere','02:15:00','pirati uno contro tutti','2005-01-02',NULL,NULL,'Produttore 5',NULL,'',''),(7,'Pirati dei caraibi: Ai confini del mondo','02:45:00','pirati uno contro tutti','2008-06-15',NULL,NULL,'Produttore 5',NULL,'',''),(8,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,1,'Produttore 5',NULL,'',''),(9,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,2,'Produttore 5',NULL,'',''),(10,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,3,'Produttore 5',NULL,'',''),(11,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,4,'Produttore 5',NULL,'',''),(12,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,5,'Produttore 5',NULL,'',''),(13,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,6,'Produttore 5',NULL,'',''),(14,'Games of trones','00:45:00','serie sui ghiacci','2017-02-01',1,7,'Produttore 5',NULL,'','');
 /*!40000 ALTER TABLE `programma` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +347,7 @@ DELIMITER ;
 --
 -- Dumping routines for database 'guida_tv'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `canali_preferiti` */;
+/*!50003 DROP PROCEDURE IF EXISTS `query_1` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -357,199 +357,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `canali_preferiti`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_1`(IN email_param VARCHAR(64), IN pwd_param VARCHAR(32))
 BEGIN
- 
-	SELECT id_canale, COUNT(id_canale) FROM `guida_tv`.`canale_preferito`
-	GROUP BY id_canale
-	HAVING COUNT(id_canale) > 1;
-    
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `genera_palinsesto` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `genera_palinsesto`(IN giorno_param DATE, IN ora_inizio_param TIME,  IN ora_fine_param TIME, IN id_canale_param INTEGER, IN id_programma_param INTEGER)
-BEGIN
-
-	DECLARE durata_programma TIME;
-	DECLARE ultimate_ora_fine TIME;
-    SET durata_programma = (SELECT prog.durata FROM `guida_tv`.`programma` prog WHERE prog.id = id_programma_param);
-	SET ultimate_ora_fine = (SELECT p.ora_fine FROM `guida_tv`.`palinsesto` p WHERE p.id_canale = id_canale_param AND p.giorno = giorno_param ORDER BY p.ora_fine DESC LIMIT 1);
-       
-	IF (giorno_param > date_add(curdate(), INTERVAL 7 DAY))
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto così in avanti';    
-	ELSEIF (giorno_param < curdate() )
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto per giorni precedenti a oggi';
-	ELSEIF (ora_inizio_param + durata_programma > ora_fine_param)
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Hai sbagliato l\'orario di fine';
-	ELSEIF (ultimate_ora_fine IS NOT NULL AND ultimate_ora_fine > ora_inizio_param)
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi inserire un programma nello spazio di un altro';
-	ELSEIF EXISTS 
-		(SELECT DISTINCT p.id FROM `guida_tv`.`palinsesto` p WHERE p.giorno = giorno_param AND p.id_canale = id_canale_param 
-														AND p.ora_inizio = ora_inizio_param AND p.ora_fine = ora_fine_param)
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi inserire un duplicato';
-	END IF;
-    
-	INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`)
-							VALUES (giorno_param, ora_inizio_param, ora_fine_param , id_canale_param, id_programma_param);
-                            
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `inserisci_attore` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `inserisci_attore`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
-BEGIN
-		IF (data_di_nascita_param > curdate()) 
+		IF (SELECT email_param NOT REGEXP '[a-zA-Z0-9._-].*@[a-zA-Z0-9._-].*\\.[a-zA-Z0-9].')
 			THEN
-				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Forse hai sbagliato la data di nascita';
+				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email inserita non corretta';
+			ELSE
+				INSERT INTO `guida_tv`.utente(`email`, `pwd`) VALUES (email_param, pwd_param);
 		END IF;
-        
-		IF EXISTS (SELECT * FROM `guida_tv`.persona p WHERE p.nome = nome_param AND p.cognome = cognome_param AND p.data_di_nascita = data_di_nascita_param)
-			THEN
-				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Attore già esistente';
-		END IF;
-
-		INSERT INTO `guida_tv`.persona(`nome`, `cognome`, `data_di_nascita`) VALUES (nome_param, cognome_param, data_di_nascita_param);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `inserisci_canale` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `inserisci_canale`(IN nome_param VARCHAR(64), IN numero_param INTEGER)
-BEGIN
-		INSERT INTO `guida_tv`.canale(`nome`, `numero`) VALUES (nome_param, numero_param);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `inserisci_episodio` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `inserisci_episodio`(IN titolo_param VARCHAR(64),
-									   IN durata_param TIME,
-									   IN descrizione_param VARCHAR(128),
-									   IN anno_uscita_param DATE,
-								       IN stagione_param TINYINT,
-                                       IN episodio_param MEDIUMINT,
-									   IN produttore_param VARCHAR(50),
-									   IN descrizione_episodio_param VARCHAR(128),
-								       IN path_param VARCHAR(255),
-								       IN immagine_param LONGBLOB)
-BEGIN
-	IF EXISTS (SELECT u.titolo FROM programma u WHERE u.titolo = titolo_param AND u.anno_uscita = anno_uscita_param AND u.produttore = produttore_param
-			   AND u.stagione = stagione_param AND u.episodio = episodio_param)
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Questo episodio è già stato inserito';
-		ELSE
-			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
-											    `path`, `immagine`) 
-			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, stagione_param, episodio_param, produttore_param, descrizione_episodio,
-				    path_param, immagine_param);
-		END IF;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `inserisci_film` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `inserisci_film`(IN titolo_param VARCHAR(64),
-											  IN durata_param TIME,
-											  IN descrizione_param VARCHAR(128),
-											  IN anno_uscita_param DATE,
-											  IN path_param VARCHAR(255),
-											  IN produttore_param VARCHAR(50),
-											  IN immagine_param LONGBLOB)
-BEGIN
-	IF EXISTS (SELECT u.titolo FROM programma u WHERE u.titolo = titolo_param AND u.anno_uscita = anno_uscita_param AND u.produttore = produttore_param)
-		THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Questo film è già stato inserito';
-		ELSE
-			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
-											    `path`, `immagine`) 
-			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, NULL, path_param, immagine_param);
-		END IF;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `programmi_preferiti` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `programmi_preferiti`()
-BEGIN
-	
-    SELECT id_programma, COUNT(id_programma) FROM `guida_tv`.`programma_preferito` 
-	GROUP BY id_programma
-	HAVING COUNT(id_programma) > 1;
-    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -591,7 +406,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `query_11`(IN id_param INTEGER UNSIGNED, IN email_param VARCHAR(64), OUT email_result TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_11`(IN id_param INTEGER UNSIGNED, OUT email_result TEXT)
 BEGIN
 
 	DECLARE ora_inizio TIME;
@@ -665,6 +480,169 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_12` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_12`(IN nome_param VARCHAR(64), IN cognome_param VARCHAR(32), IN data_di_nascita_param DATE)
+BEGIN
+		IF (data_di_nascita_param > curdate()) 
+			THEN
+				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Forse hai sbagliato la data di nascita';
+		END IF;
+        
+		IF EXISTS (SELECT * FROM `guida_tv`.persona p WHERE p.nome = nome_param AND p.cognome = cognome_param AND p.data_di_nascita = data_di_nascita_param)
+			THEN
+				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Attore già esistente';
+		END IF;
+
+		INSERT INTO `guida_tv`.persona(`nome`, `cognome`, `data_di_nascita`) VALUES (nome_param, cognome_param, data_di_nascita_param);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_13` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_13`(IN nome_param VARCHAR(64), IN numero_param INTEGER)
+BEGIN
+		INSERT INTO `guida_tv`.canale(`nome`, `numero`) VALUES (nome_param, numero_param);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_14` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_14`(IN giorno_param DATE, IN ora_inizio_param TIME,  IN ora_fine_param TIME, IN id_canale_param INTEGER, IN id_programma_param INTEGER)
+BEGIN
+
+	DECLARE durata_programma TIME;
+	DECLARE ultimate_ora_fine TIME;
+    SET durata_programma = (SELECT prog.durata FROM `guida_tv`.`programma` prog WHERE prog.id = id_programma_param);
+	SET ultimate_ora_fine = (SELECT p.ora_fine FROM `guida_tv`.`palinsesto` p WHERE p.id_canale = id_canale_param AND p.giorno = giorno_param ORDER BY p.ora_fine DESC LIMIT 1);
+       
+	IF (giorno_param > date_add(curdate(), INTERVAL 7 DAY))
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto così in avanti';    
+	ELSEIF (giorno_param < curdate() )
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi programmare un palinsesto per giorni precedenti a oggi';
+	ELSEIF (ora_inizio_param + durata_programma > ora_fine_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Hai sbagliato l\'orario di fine';
+	ELSEIF (ultimate_ora_fine IS NOT NULL AND ultimate_ora_fine > ora_inizio_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi inserire un programma nello spazio di un altro';
+	ELSEIF EXISTS 
+		(SELECT DISTINCT p.id FROM `guida_tv`.`palinsesto` p WHERE p.giorno = giorno_param AND p.id_canale = id_canale_param 
+														AND p.ora_inizio = ora_inizio_param AND p.ora_fine = ora_fine_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Non puoi inserire un duplicato';
+	END IF;
+    
+	INSERT INTO `guida_tv`.`palinsesto` (`giorno`, `ora_inizio`, `ora_fine`, `id_canale`, `id_programma`)
+							VALUES (giorno_param, ora_inizio_param, ora_fine_param , id_canale_param, id_programma_param);
+                            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_2A` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_2A`(IN titolo_param VARCHAR(64),
+											  IN durata_param TIME,
+											  IN descrizione_param VARCHAR(128),
+											  IN anno_uscita_param DATE,
+											  IN path_param VARCHAR(255),
+											  IN produttore_param VARCHAR(50),
+											  IN immagine_param LONGBLOB)
+BEGIN
+	IF EXISTS (SELECT u.titolo FROM programma u WHERE u.titolo = titolo_param AND u.anno_uscita = anno_uscita_param AND u.produttore = produttore_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Questo film è già stato inserito';
+		ELSE
+			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
+											    `path`, `immagine`) 
+			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, NULL, NULL, produttore_param, NULL, path_param, immagine_param);
+		END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_2B` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_2B`(IN titolo_param VARCHAR(64),
+									   IN durata_param TIME,
+									   IN descrizione_param VARCHAR(128),
+									   IN anno_uscita_param DATE,
+								       IN stagione_param TINYINT,
+                                       IN episodio_param MEDIUMINT,
+									   IN produttore_param VARCHAR(50),
+									   IN descrizione_episodio_param VARCHAR(128),
+								       IN path_param VARCHAR(255),
+								       IN immagine_param LONGBLOB)
+BEGIN
+	IF EXISTS (SELECT u.titolo FROM programma u WHERE u.titolo = titolo_param AND u.anno_uscita = anno_uscita_param AND u.produttore = produttore_param
+			   AND u.stagione = stagione_param AND u.episodio = episodio_param)
+		THEN
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Questo episodio è già stato inserito';
+		ELSE
+			INSERT INTO `guida_tv`.`programma` (`titolo`, `durata`, `descizione`, `anno_uscita`,`stagione`, `episodio`, `produttore`, `descrizione_episodio`,
+											    `path`, `immagine`) 
+			VALUES (titolo_param, durata_param, descrizione_param, anno_uscita_param, stagione_param, episodio_param, produttore_param, descrizione_episodio,
+				    path_param, immagine_param);
+		END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `query_3` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -716,6 +694,52 @@ BEGIN
 	JOIN `guida_tv`.canale can ON pal.id_canale = can.id
     WHERE prog.stagione != 0 AND prog.titolo = nome_serie_param ORDER BY pal.giorno ASC;
 	-- WHERE prog.id = (SELECT p.id FROM `guida_tv`.programma p WHERE p.titolo = nome_serie_param);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_5A` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_5A`()
+BEGIN
+ 
+	SELECT id_canale, COUNT(id_canale) FROM `guida_tv`.`canale_preferito`
+	GROUP BY id_canale
+	HAVING COUNT(id_canale) > 1;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `query_5B` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `query_5B`()
+BEGIN
+	
+    SELECT id_programma, COUNT(id_programma) FROM `guida_tv`.`programma_preferito` 
+	GROUP BY id_programma
+	HAVING COUNT(id_programma) > 1;
+    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -873,30 +897,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `signUp` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `signUp`(IN email_param VARCHAR(64), IN pwd_param VARCHAR(32))
-BEGIN
-		IF (SELECT email_param NOT REGEXP '[a-zA-Z0-9._-].*@[a-zA-Z0-9._-].*\\.[a-zA-Z0-9].')
-			THEN
-				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email inserita non corretta';
-			ELSE
-				INSERT INTO `guida_tv`.utente(`email`, `pwd`) VALUES (email_param, pwd_param);
-		END IF;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -907,4 +907,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-29  2:29:37
+-- Dump completed on 2022-06-29 17:21:20
